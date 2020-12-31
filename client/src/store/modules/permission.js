@@ -41,17 +41,86 @@ const actions = {
     return new Promise(resolve => {
       let asyncRouterMap
       asyncRouterMap = []
-      getPermissionRouter({ roles: roles }).then(res => {
-        asyncRouterMap = res.data.concat({
-          path: '*',
-          redirect: '/404',
-          hidden: true
-        }) //404 must be put end
-        // 组建映射
-        const asyncRouterMapRes = routerMapComponet(asyncRouterMap)
-        commit('SET_ROUTES', asyncRouterMapRes)
-        resolve(asyncRouterMapRes)
-      })
+      // getPermissionRouter({ roles: roles }).then(res => {
+      let res = {
+        message: 'success',
+        code: 20000,
+        data: [
+          {
+            path: '/',
+            component: 'Layout',
+            redirect: '/dashboard',
+            children: [
+              {
+                path: 'dashboard',
+                name: 'Dashboard',
+                component: 'Dashboard',
+                meta: {
+                  title: '控制台',
+                  icon: 'dashboard',
+                  affix: true
+                }
+              }
+            ]
+          },
+          {
+            path: '/article',
+            name: 'Article',
+            component: 'Layout',
+            redirect: '/article/article-list',
+            // redirect: 'noRedirect',
+            alwaysShow: true,
+            hidden: false,
+            meta: {
+              title: '文章管理',
+              icon: 'table'
+            },
+            children: [
+              {
+                path: 'article-list',
+                name: 'ArticleList',
+                component: 'ArticleList',
+                alwaysShow: false,
+                hidden: false,
+                meta: {
+                  title: '文章列表',
+                  icon: 'table'
+                }
+              },
+              {
+                path: 'article-add',
+                name: 'ArticleAdd',
+                alwaysShow: false,
+                hidden: true,
+                component: 'ArticleAdd',
+                meta: {
+                  title: '文章添加'
+                }
+              },
+              {
+                path: 'article-edit',
+                name: 'ArticleEdit',
+                alwaysShow: false,
+                hidden: true,
+                component: 'ArticleEdit',
+                meta: {
+                  title: '文章编辑'
+                }
+              }
+            ]
+          }
+        ]
+      }
+      asyncRouterMap = res.data.concat({
+        path: '*',
+        redirect: '/404',
+        hidden: true
+      }) //404 must be put end
+      // 组建映射
+      const asyncRouterMapRes = routerMapComponet(asyncRouterMap)
+      commit('SET_ROUTES', asyncRouterMapRes)
+      resolve(asyncRouterMapRes)
+      // })
     })
   }
 }
