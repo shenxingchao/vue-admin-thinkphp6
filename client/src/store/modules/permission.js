@@ -50,65 +50,120 @@ const actions = {
             path: '/',
             component: 'Layout',
             redirect: '/dashboard',
+            alwaysShow: false,
+            hidden: false,
+            meta: {
+              title: '', //标题为空的解决办法就是 数据库存2个标题  一个是别名 一个路由标题 别名唯一即可
+              icon: '',
+              affix: false,
+              breadcrumb: false
+            },
             children: [
               {
                 path: 'dashboard',
                 name: 'Dashboard',
                 component: 'Dashboard',
+                alwaysShow: false,
+                hidden: false,
                 meta: {
                   title: '控制台',
                   icon: 'dashboard',
-                  affix: true
+                  affix: true,
+                  breadcrumb: true
                 }
               }
             ]
           },
           {
-            path: '/article',
-            name: 'Article',
+            path: '/permission',
+            name: 'Permission',
             component: 'Layout',
-            redirect: '/article/article-list',
-            // redirect: 'noRedirect',
+            redirect: 'noRedirect',
             alwaysShow: true,
             hidden: false,
             meta: {
-              title: '文章管理',
-              icon: 'table'
+              title: '权限管理',
+              icon: 'permission',
+              affix: false,
+              breadcrumb: true
             },
             children: [
               {
-                path: 'article-list',
-                name: 'ArticleList',
-                component: 'ArticleList',
+                path: '/route-resource',
+                name: 'RouteResource',
+                component: 'RouteResource',
+                redirect: '/route-resource/route-resource-list',
                 alwaysShow: false,
                 hidden: false,
                 meta: {
-                  title: '文章列表',
-                  icon: 'table'
-                }
-              },
-              {
-                path: 'article-add',
-                name: 'ArticleAdd',
-                alwaysShow: false,
-                hidden: true,
-                component: 'ArticleAdd',
-                meta: {
-                  title: '文章添加'
-                }
-              },
-              {
-                path: 'article-edit',
-                name: 'ArticleEdit',
-                alwaysShow: false,
-                hidden: true,
-                component: 'ArticleEdit',
-                meta: {
-                  title: '文章编辑'
-                }
+                  title: '路由资源管理',
+                  icon: '',
+                  affix: false,
+                  breadcrumb: false
+                },
+                children: [
+                  {
+                    path: 'route-resource-list',
+                    name: 'RouteResourceList',
+                    component: 'RouteResourceList',
+                    alwaysShow: false,
+                    hidden: false,
+                    meta: {
+                      title: '路由资源',
+                      icon: 'table',
+                      affix: false,
+                      breadcrumb: true
+                    }
+                  }
+                ]
               }
             ]
           }
+          // {
+          //   path: '/article',
+          //   name: 'Article',
+          //   component: 'Layout',
+          //   redirect: 'noRedirect',
+          //   alwaysShow: true,
+          //   hidden: false,
+          //   meta: {
+          //     title: '文章管理',
+          //     icon: 'table'
+          //   },
+          //   children: [
+          //     {
+          //       path: 'article-list',
+          //       name: 'ArticleList',
+          //       component: 'ArticleList',
+          //       alwaysShow: false,
+          //       hidden: false,
+          //       meta: {
+          //         title: '文章列表',
+          //         icon: 'table'
+          //       }
+          //     },
+          //     {
+          //       path: 'article-add',
+          //       name: 'ArticleAdd',
+          //       alwaysShow: false,
+          //       hidden: true,
+          //       component: 'ArticleAdd',
+          //       meta: {
+          //         title: '文章添加'
+          //       }
+          //     },
+          //     {
+          //       path: 'article-edit',
+          //       name: 'ArticleEdit',
+          //       alwaysShow: false,
+          //       hidden: true,
+          //       component: 'ArticleEdit',
+          //       meta: {
+          //         title: '文章编辑'
+          //       }
+          //     }
+          //   ]
+          // }
         ]
       }
       asyncRouterMap = res.data.concat({
