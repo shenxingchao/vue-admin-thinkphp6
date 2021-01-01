@@ -1,4 +1,6 @@
 const configUrl =
-  process.env.NODE_ENV === 'development' ? '' : 'http://www.test.com'
+  process.env.NODE_ENV === 'development'
+    ? 'http://www.test.com'
+    : 'http://www.test.com'
 
 export { configUrl }

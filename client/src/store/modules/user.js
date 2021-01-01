@@ -36,8 +36,8 @@ const actions = {
   login({ commit }, userInfo) {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
-      commit('SET_TOKEN', '待修改')
-      setToken('待修改')
+      commit('SET_TOKEN', '123')
+      setToken('123')
       resolve()
       // login({ username: username.trim(), password: password })
       //   .then(response => {
