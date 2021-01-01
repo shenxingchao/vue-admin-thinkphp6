@@ -48,6 +48,7 @@ const actions = {
         data: [
           {
             path: '/',
+            name: 'Index',
             component: 'Layout',
             redirect: '/dashboard',
             alwaysShow: false,
@@ -89,10 +90,10 @@ const actions = {
             },
             children: [
               {
-                path: '/route-resource',
+                path: 'route-resource',
                 name: 'RouteResource',
                 component: 'RouteResource',
-                redirect: '/route-resource/route-resource-list',
+                redirect: '/permission/route-resource/route-resource-list',
                 alwaysShow: false,
                 hidden: false,
                 meta: {
@@ -110,6 +111,19 @@ const actions = {
                     hidden: false,
                     meta: {
                       title: '路由资源',
+                      icon: 'table',
+                      affix: false,
+                      breadcrumb: true
+                    }
+                  },
+                  {
+                    path: 'route-resource-add',
+                    name: 'RouteResourceAdd',
+                    component: 'RouteResourceAdd',
+                    alwaysShow: false,
+                    hidden: true,
+                    meta: {
+                      title: '路由资源添加',
                       icon: 'table',
                       affix: false,
                       breadcrumb: true

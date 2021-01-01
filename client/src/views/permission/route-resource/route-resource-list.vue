@@ -1,8 +1,29 @@
 <template>
   <div class="app-container">
-    123
+    <el-card shadow="hover">
+      <custom-table id="article-list" :data="List" :table-head="tableHead" :params="params" :show-selection="true"
+                    :opt-width="180" @handleSizeChange="handleSizeChange" @handleCurrentChange="handleCurrentChange"
+                    @handleSelectionChange="handleSelectionChange" @handleRowDblClick="handleRowDblClick"
+                    @handleEdit="handleEdit" @handleDelete="handleDelete">
+        <template v-slot:searchBar>
+          <el-form ref="searchForm" :inline="true" :model="params" class="demo-form-inline" size="mini">
+            <el-form-item>
+              <el-button type="primary" icon="el-icon-plus" size="mini"
+                         @click.native="$router.push('/permission/route-resource/route-resource-add')">添加
+              </el-button>
+            </el-form-item>
+          </el-form>
+        </template>
+        <template v-slot:opt="slotProps">
+          <el-button size="mini" icon="el-icon-download" type="warning"
+                     @click.stop="handleDownload(slotProps.scope.$index, slotProps.scope.row)">
+          </el-button>
+        </template>
+      </custom-table>
+    </el-card>
   </div>
 </template>
+
 
 <script>
 import CustomTable from '@/components/CustomTable'
@@ -10,7 +31,7 @@ import { articleLst, articleDelete } from '@/api/article'
 export default {
   name: 'RouteResourceList',
   components: {
-    // CustomTable,
+    CustomTable,
   },
   data() {
     return {
@@ -164,11 +185,6 @@ export default {
           })
         })
         .catch(() => {})
-    },
-    onSubmit() {
-      this.params.page = 1
-      this.params.pageSize = 10
-      this.getArticleLst()
     },
   },
 }
