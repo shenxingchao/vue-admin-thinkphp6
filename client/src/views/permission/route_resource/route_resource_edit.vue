@@ -139,7 +139,7 @@ export default {
     },
     //获取路由配置
     getRouteResourceOptions() {
-      return routeResourceOptions({})
+      return routeResourceOptions({ id: this.ruleForm.id })
         .then((res) => {
           this.options = res.data.concat([
             {

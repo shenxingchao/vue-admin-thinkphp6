@@ -174,7 +174,7 @@ class RouteResource extends BaseController {
      *  "data":null
      * }
      */
-    public function routeResourceOptions() {
+    public function routeResourceOptions(): Response {
         $request = $this->request;
         $request->filter(['trim']);
         $code    = 20000;
@@ -182,7 +182,9 @@ class RouteResource extends BaseController {
         try {
             $param = $request->param();
             $where = [];
-
+            if (isset($param['id'])) {
+                $where[] = ['id', '<>', $param['id']];
+            }
             $route_resource_options = Db::name('route_resource')->where($where)->select();
             $route_resource_options = $this->getTree($route_resource_options);
             $data                   = $route_resource_options;
@@ -225,7 +227,7 @@ class RouteResource extends BaseController {
      *  }]
      * }
      */
-    public function routeResourceList() {
+    public function routeResourceList(): Response {
         $request = $this->request;
         $request->filter(['trim']);
         $code    = 20000;
@@ -242,4 +244,28 @@ class RouteResource extends BaseController {
         return json(['code' => $code, 'message' => $message, 'data' => $data]);
     }
 
+    public function routeResourceDetail() {
+        $request = $this->request;
+        $request->filter(['trim']);
+        $code    = 20000;
+        $message = 'SUCCESS';
+        try {
+            $param = $request->param();
+            $where = [
+                'id' => $param['id'],
+            ];
+            $res = Db::name('route_resource')->where($where)->find();
+            if ($res) {
+                $res['always_show'] ? $res['always_show'] = true : $res['always_show'] = false;
+                $res['breadcrumb'] ? $res['breadcrumb']   = true : $res['breadcrumb']   = false;
+                $res['affix'] ? $res['affix']             = true : $res['affix']             = false;
+                $res['hidden'] ? $res['hidden']           = true : $res['hidden']           = false;
+            }
+            $data = $res;
+        } catch (Exception $e) {
+            $data    = null;
+            $message = $e->getMessage();
+        }
+        return json(['code' => $code, 'message' => $message, 'data' => $data]);
+    }
 }

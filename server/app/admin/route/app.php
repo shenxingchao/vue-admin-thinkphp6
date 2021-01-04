@@ -14,5 +14,7 @@ Route::group('auth', function () {
     //路由资源配置
     Route::post('RouteResource/routeResourceOptions', 'RouteResource/routeResourceOptions');
     //路由资源列表
-    Route::get('/RouteResource/routeResourceList', '/RouteResource/routeResourceList');
+    Route::get('RouteResource/routeResourceList', 'RouteResource/routeResourceList');
+    //路由资源详情
+    Route::get('RouteResource/routeResourceDetail', 'RouteResource/routeResourceDetail');
 });
