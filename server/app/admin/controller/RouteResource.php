@@ -193,6 +193,38 @@ class RouteResource extends BaseController {
         return json(['code' => $code, 'message' => $message, 'data' => $data]);
     }
 
+    /**
+     * @api {get} /RouteResource/routeResourceList 获取路由资源列表
+     * @apiVersion 0.0.1
+     * @apiName routeResourceList
+     * @apiGroup 路由资源
+     *
+     * @apiSuccess (返回字段) {Number} code 状态码
+     * @apiSuccess (返回字段) {String} message  消息
+     * @apiSuccess (返回字段) {Array} data  资源数组无限极
+     *
+     * @apiSuccessExample 成功示例
+     * HTTP/1.1 200 Success
+     * {
+     *  "code":20000,
+     *  "message":"SUCCESS",
+     *  "data":[{
+     *      affix: 0
+     *      always_show: 0
+     *      breadcrumb: 0
+     *      children: []
+     *      component: "Layout"
+     *      hidden: 0
+     *      icon: ""
+     *      id: 1
+     *      name: "Index"
+     *      parent_id: 0
+     *      path: "/"
+     *      redirect: "/dashboard"
+     *      title: "首页"
+     *  }]
+     * }
+     */
     public function routeResourceList() {
         $request = $this->request;
         $request->filter(['trim']);

@@ -16,6 +16,8 @@ export const map = {
   RouteResourceList: () =>
     import('@/views/permission/route_resource/route_resource_list'), // 路由资源列表 level3
   RouteResourceAdd: () =>
-    import('@/views/permission/route_resource/route_resource_add') // 路由资源添加 level3
+    import('@/views/permission/route_resource/route_resource_add'), // 路由资源添加 level3
+  RouteResourceEdit: () =>
+    import('@/views/permission/route_resource/route_resource_edit') // 路由资源编辑 level3
 }
 export default map

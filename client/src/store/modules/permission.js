@@ -128,6 +128,19 @@ const actions = {
                       affix: false,
                       breadcrumb: true
                     }
+                  },
+                  {
+                    path: 'route_resource_edit',
+                    name: 'RouteResourceEdit',
+                    component: 'RouteResourceEdit',
+                    alwaysShow: false,
+                    hidden: true,
+                    meta: {
+                      title: '路由资源编辑',
+                      icon: 'table',
+                      affix: false,
+                      breadcrumb: true
+                    }
                   }
                 ]
               }

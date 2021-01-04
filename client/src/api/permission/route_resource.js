@@ -26,3 +26,21 @@ export function routeResourceList(params) {
     params: params
   })
 }
+
+//路由资源编辑
+export function routeResourceEdit(ruleForm) {
+  return request({
+    url: '/RouteResource/routeResourceEdit',
+    method: 'post',
+    data: ruleForm
+  })
+}
+
+//路由资源详情
+export function routeResourceDetail(params) {
+  return request({
+    url: '/RouteResource/routeResourceDetail',
+    method: 'get',
+    params: params
+  })
+}

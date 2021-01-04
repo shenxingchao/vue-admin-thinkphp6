@@ -219,7 +219,7 @@ export default {
     handleSelectAll(selection, row) {
       if (this.isRadio) {
         this.$refs.multipleTable.clearSelection()
-        console.log('null')
+        // console.log('null')
       }
     },
     //选中行状态改变

@@ -135,7 +135,7 @@ export default {
     },
     handleRowDblClick(val) {
       this.$router.push({
-        path: '/article/article-edit',
+        path: '/permission/route_resource/route_resource_edit',
         query: {
           id: val,
         },
