@@ -54,7 +54,7 @@ const actions = {
             alwaysShow: false,
             hidden: false,
             meta: {
-              title: '', //标题为空的解决办法就是 数据库存2个标题  一个是别名 一个路由标题 别名唯一即可
+              title: '', //标题为空 取权限时置 如果是/ 置为''
               icon: '',
               affix: false,
               breadcrumb: false
