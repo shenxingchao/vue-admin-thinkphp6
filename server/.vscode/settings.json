@@ -46,8 +46,18 @@
   //phpfmt插件
   //设置php保存时格式化
   "[php]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "kokororin.vscode-phpfmt"
   },
-  "phpfmt.psr2": false,//花括号换行
-  "phpfmt.php_bin": "\"D:\\sxc\\wnmp\\php-7.4.13\\php.exe\""
+  "phpfmt.psr2": false, //花括号换行
+  "phpfmt.php_bin": "\"D:\\sxc\\wnmp\\php-7.4.13\\php.exe\"",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
