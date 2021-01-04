@@ -9,7 +9,7 @@
           <el-form ref="searchForm" :inline="true" :model="params" class="demo-form-inline" size="mini">
             <el-form-item>
               <el-button type="primary" icon="el-icon-plus" size="mini"
-                         @click.native="$router.push('/permission/route-resource/route-resource-add')">添加
+                         @click.native="$router.push('/permission/route_resource/route_resource_add')">添加
               </el-button>
             </el-form-item>
           </el-form>

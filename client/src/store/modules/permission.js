@@ -90,10 +90,10 @@ const actions = {
             },
             children: [
               {
-                path: 'route-resource',
+                path: 'route_resource',
                 name: 'RouteResource',
                 component: 'RouteResource',
-                redirect: '/permission/route-resource/route-resource-list',
+                redirect: '/permission/route_resource/route_resource_list',
                 alwaysShow: false,
                 hidden: false,
                 meta: {
@@ -104,7 +104,7 @@ const actions = {
                 },
                 children: [
                   {
-                    path: 'route-resource-list',
+                    path: 'route_resource_list',
                     name: 'RouteResourceList',
                     component: 'RouteResourceList',
                     alwaysShow: false,
@@ -117,7 +117,7 @@ const actions = {
                     }
                   },
                   {
-                    path: 'route-resource-add',
+                    path: 'route_resource_add',
                     name: 'RouteResourceAdd',
                     component: 'RouteResourceAdd',
                     alwaysShow: false,

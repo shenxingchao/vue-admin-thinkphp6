@@ -19,8 +19,8 @@
             <el-form-item label="重定向路由" prop="redirect">
               <el-input v-model="ruleForm.redirect" placeholder="重定向路由" />
             </el-form-item>
-            <el-form-item label="显示根节点" prop="alwaysShow">
-              <el-switch v-model="ruleForm.alwaysShow" active-color="#13ce66" inactive-color="#ff4949">
+            <el-form-item label="显示根节点" prop="always_show">
+              <el-switch v-model="ruleForm.always_show" active-color="#13ce66" inactive-color="#ff4949">
               </el-switch>
             </el-form-item>
             <el-form-item label="菜单隐藏路由" prop="hidden">
@@ -38,6 +38,12 @@
               <el-switch v-model="ruleForm.breadcrumb" active-color="#13ce66" inactive-color="#ff4949">
               </el-switch>
             </el-form-item>
+            <el-form-item label="上级路由" prop="parent_id">
+              <el-select v-model="ruleForm.parent_id" placeholder="请选择" clearable>
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+              </el-select>
+            </el-form-item>
             <el-form-item>
               <el-button type="primary" @click="submitForm('ruleForm')">确定</el-button>
               <el-button @click="resetForm('ruleForm')">重置</el-button>
@@ -50,7 +56,7 @@
 </template>
  
 <script>
-import { routeResourceAdd } from '@/api/permission/route-resource'
+import { routeResourceAdd } from '@/api/permission/route_resource'
 
 export default {
   name: 'RouteResourceAdd',
@@ -62,12 +68,19 @@ export default {
         name: '',
         component: '',
         redirect: '',
-        alwaysShow: false,
+        always_show: false,
         hidden: false,
         icon: '',
         affix: false,
         breadcrumb: true,
+        parent_id: null,
       },
+      options: [
+        {
+          value: 0,
+          label: '顶级路由',
+        },
+      ],
       rules: {
         title: [
           {
@@ -97,6 +110,13 @@ export default {
             trigger: 'blur',
           },
         ],
+        parent_id: [
+          {
+            required: true,
+            message: '请选择上级路由',
+            trigger: 'blur',
+          },
+        ],
       },
     }
   },
@@ -113,7 +133,7 @@ export default {
                 type: 'success',
                 onClose: function () {
                   _this.$router.push(
-                    '/permission/route-resource/route-resource-list'
+                    '/permission/route_resource/route_resource_list'
                   )
                 },
               })

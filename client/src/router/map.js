@@ -12,10 +12,10 @@ export const map = {
   ArticleEdit: () => import('@/views/article/article-edit'), // 文章编辑
   Permission: () => Layout, //权限管理 level1
   RouteResource: () =>
-    import('@/views/permission/route-resource/route-resource'), // 路由资源管理 level2
+    import('@/views/permission/route_resource/route_resource'), // 路由资源管理 level2
   RouteResourceList: () =>
-    import('@/views/permission/route-resource/route-resource-list'), // 路由资源列表 level3
+    import('@/views/permission/route_resource/route_resource_list'), // 路由资源列表 level3
   RouteResourceAdd: () =>
-    import('@/views/permission/route-resource/route-resource-add') // 路由资源添加 level3
+    import('@/views/permission/route_resource/route_resource_add') // 路由资源添加 level3
 }
 export default map
