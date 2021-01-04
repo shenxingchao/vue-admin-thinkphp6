@@ -5,6 +5,6 @@ namespace app\admin\controller;
 
 class RouteResource extends BaseController {
     public function routeResourceAdd() {
-        return json(['code'=>20000,'msg'=>"333"]);
+        return json(['code' => 20000, 'msg' => "333"]);
     }
 }

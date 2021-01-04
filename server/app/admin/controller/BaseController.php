@@ -41,7 +41,7 @@ abstract class BaseController {
      * @param  App  $app  应用对象
      */
     public function __construct(App $app) {
-        $this->app = $app;
+        $this->app     = $app;
         $this->request = $this->app->request;
 
         // 控制器初始化
@@ -71,7 +71,7 @@ abstract class BaseController {
                 [$validate, $scene] = explode('.', $validate);
             }
             $class = false !== strpos($validate, '\\') ? $validate : $this->app->parseClass('validate', $validate);
-            $v = new $class();
+            $v     = new $class();
             if (!empty($scene)) {
                 $v->scene($scene);
             }

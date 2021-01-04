@@ -13,8 +13,7 @@ use Throwable;
 /**
  * 应用异常处理类
  */
-class ExceptionHandle extends Handle
-{
+class ExceptionHandle extends Handle {
     /**
      * 不需要记录信息（日志）的异常类列表
      * @var array
@@ -34,8 +33,7 @@ class ExceptionHandle extends Handle
      * @param  Throwable $exception
      * @return void
      */
-    public function report(Throwable $exception): void
-    {
+    public function report(Throwable $exception): void {
         // 使用内置的方式记录异常日志
         parent::report($exception);
     }
@@ -48,8 +46,7 @@ class ExceptionHandle extends Handle
      * @param Throwable $e
      * @return Response
      */
-    public function render($request, Throwable $e): Response
-    {
+    public function render($request, Throwable $e): Response {
         // 添加自定义异常处理机制
 
         // 其他错误交给系统处理

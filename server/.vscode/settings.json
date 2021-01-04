@@ -50,6 +50,7 @@
     "editor.defaultFormatter": "kokororin.vscode-phpfmt"
   },
   "phpfmt.psr2": false, //花括号换行
+  "phpfmt.enable_auto_align":true,//启用对齐
   "phpfmt.php_bin": "\"D:\\sxc\\wnmp\\php-7.4.13\\php.exe\"",
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

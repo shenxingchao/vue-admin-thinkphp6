@@ -10,8 +10,7 @@ use think\Validate;
 /**
  * 控制器基础类
  */
-abstract class BaseController
-{
+abstract class BaseController {
     /**
      * Request实例
      * @var \think\Request
@@ -41,8 +40,7 @@ abstract class BaseController
      * @access public
      * @param  App  $app  应用对象
      */
-    public function __construct(App $app)
-    {
+    public function __construct(App $app) {
         $this->app     = $app;
         $this->request = $this->app->request;
 
@@ -51,8 +49,7 @@ abstract class BaseController
     }
 
     // 初始化
-    protected function initialize()
-    {}
+    protected function initialize() {}
 
     /**
      * 验证数据
@@ -64,8 +61,7 @@ abstract class BaseController
      * @return array|string|true
      * @throws ValidateException
      */
-    protected function validate(array $data, $validate, array $message = [], bool $batch = false)
-    {
+    protected function validate(array $data, $validate, array $message = [], bool $batch = false) {
         if (is_array($validate)) {
             $v = new Validate();
             $v->rule($validate);
