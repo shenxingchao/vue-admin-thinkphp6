@@ -8,3 +8,21 @@ export function routeResourceAdd(ruleForm) {
     data: ruleForm
   })
 }
+
+//路由资源上级路由选项
+export function routeResourceOptions(params) {
+  return request({
+    url: '/RouteResource/routeResourceOptions',
+    method: 'get',
+    params: params
+  })
+}
+
+//路由资源列表
+export function routeResourceList(params) {
+  return request({
+    url: '/RouteResource/routeResourceList',
+    method: 'get',
+    params: params
+  })
+}

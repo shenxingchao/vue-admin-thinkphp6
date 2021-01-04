@@ -11,4 +11,8 @@ Route::group('normal', function () {
 Route::group('auth', function () {
     //路由资源添加
     Route::post('RouteResource/routeResourceAdd', 'RouteResource/routeResourceAdd');
+    //路由资源配置
+    Route::post('RouteResource/routeResourceOptions', 'RouteResource/routeResourceOptions');
+    //路由资源列表
+    Route::get('/RouteResource/routeResourceList', '/RouteResource/routeResourceList');
 });

@@ -56,7 +56,10 @@
 </template>
  
 <script>
-import { routeResourceAdd } from '@/api/permission/route_resource'
+import {
+  routeResourceAdd,
+  routeResourceOptions,
+} from '@/api/permission/route_resource'
 
 export default {
   name: 'RouteResourceAdd',
@@ -120,8 +123,23 @@ export default {
       },
     }
   },
-  mounted() {},
+  mounted() {
+    this.getRouteResourceOptions()
+  },
   methods: {
+    //获取路由配置
+    getRouteResourceOptions() {
+      return routeResourceOptions({})
+        .then((res) => {
+          this.options = res.data.concat([
+            {
+              value: 0,
+              label: '顶级路由',
+            },
+          ])
+        })
+        .catch(() => {})
+    },
     submitForm(formName) {
       const _this = this
       this.$refs[formName].validate((valid) => {
