@@ -160,7 +160,7 @@ class RouteResource extends BaseController {
      * @apiParam (参数) {Number} [id] 不是当前的编辑的ID
      * @apiParamExample {json} 请求示例
      * {
-     *  'id': 1，
+     *  'id': 1,
      * }
      *
      * @apiSuccess (返回字段) {Number} code 状态码
@@ -248,14 +248,12 @@ class RouteResource extends BaseController {
      * @api {get} /routeResourceDetail 路由资源详情
      * @apiVersion 0.0.1
      * @apiName routeResourceDetail
-     * @apiGroup 用户
+     * @apiGroup 路由资源
      *
-     * @apiParam (参数) {Number} id=2 用户id
-     * @apiParam (参数) {Number} [age=4] 年龄(中括号表示可选)
+     * @apiParam (参数) {Number} id=1 路由资源id
      * @apiParamExample {json} 请求示例
      * {
-     *  'id': 1，
-     *  'age': 2
+     *  'id': 1,
      * }
      * @apiSuccess (返回字段) {String} firstname 姓
      * @apiSuccess (返回字段) {String} lastname  名字
