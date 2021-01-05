@@ -2,4 +2,4 @@
 /vendor
 *.log
 /doc
-.vscode
+/.vscode
