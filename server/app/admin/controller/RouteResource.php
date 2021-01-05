@@ -244,6 +244,39 @@ class RouteResource extends BaseController {
         return json(['code' => $code, 'message' => $message, 'data' => $data]);
     }
 
+    /**
+     * @api {get} /routeResourceDetail 路由资源详情
+     * @apiVersion 0.0.1
+     * @apiName routeResourceDetail
+     * @apiGroup 用户
+     *
+     * @apiParam (参数) {Number} id=2 用户id
+     * @apiParam (参数) {Number} [age=4] 年龄(中括号表示可选)
+     * @apiParamExample {json} 请求示例
+     * {
+     *  'id': 1，
+     *  'age': 2
+     * }
+     * @apiSuccess (返回字段) {String} firstname 姓
+     * @apiSuccess (返回字段) {String} lastname  名字
+     *
+     * @apiSuccessExample 成功示例
+     * HTTP/1.1 200 Success
+     * {
+     *    'firstname': '张',
+     *    'lastname': '三四'
+     * }
+     * @apiErrorExample 失败示例1
+     * {
+     *    'code': '1001'
+     * }
+     * @apiErrorExample 失败示例2
+     * {
+     *    'code': '1002'
+     * }
+     * @apiError (错误代码) 1001 内容1
+     * @apiError (错误代码) 1002 内容2
+     */
     public function routeResourceDetail() {
         $request = $this->request;
         $request->filter(['trim']);
