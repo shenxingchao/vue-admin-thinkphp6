@@ -44,3 +44,12 @@ export function routeResourceDetail(params) {
     params: params
   })
 }
+
+//路由资源详情
+export function routeResourceDelete(params) {
+  return request({
+    url: '/RouteResource/routeResourceDelete',
+    method: 'get',
+    params: params
+  })
+}

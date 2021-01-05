@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-card shadow="hover">
       <custom-table id="article-list" :data="List" :table-head="tableHead" :params="params" :show-selection="true"
-                    :showPage="false" :is-radio="true" :opt-width="180" @handleSelectionChange="handleSelectionChange"
+                    :show-page="false" :is-radio="true" :opt-width="180" @handleSelectionChange="handleSelectionChange"
                     @handleRowDblClick="handleRowDblClick" @handleEdit="handleEdit" @handleDelete="handleDelete">
         <template v-slot:searchBar>
           <el-form ref="searchForm" :inline="true" :model="params" class="demo-form-inline" size="mini">
@@ -10,6 +10,7 @@
               <el-button type="primary" icon="el-icon-plus" size="mini"
                          @click.native="$router.push('/permission/route_resource/route_resource_add')">添加
               </el-button>
+              <el-button type="danger" icon="el-icon-delete" size="mini" @click.native="handleDeleteRows">删除</el-button>
             </el-form-item>
           </el-form>
         </template>
@@ -21,8 +22,10 @@
 
 <script>
 import CustomTable from '@/components/CustomTable'
-import { routeResourceList } from '@/api/permission/route_resource'
-import { articleLst, articleDelete } from '@/api/article'
+import {
+  routeResourceList,
+  routeResourceDelete,
+} from '@/api/permission/route_resource'
 export default {
   name: 'RouteResourceList',
   components: {
@@ -145,7 +148,7 @@ export default {
       this.handleRowDblClick(row.id)
     },
     handleDelete(index, row) {
-      articleDelete({ id: row.id })
+      routeResourceDelete({ id: row.id })
         .then((res) => {
           this.List.splice(index, 1)
           this.$message({
@@ -164,7 +167,7 @@ export default {
         })
         return false
       }
-      articleDelete({ id: this.selectionId })
+      routeResourceDelete({ id: this.selectionId })
         .then((res) => {
           //这里删除还可以使用逆向循环删除，删除以后还可以重新获取数据
           this.List = this.List.filter((item) => this.selectionId !== item.id)

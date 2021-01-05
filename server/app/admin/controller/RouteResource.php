@@ -292,7 +292,7 @@ class RouteResource extends BaseController {
      * @apiName routeResourceDetail
      * @apiGroup 路由资源
      *
-     * @apiParam (参数) {Number} id=1 路由资源id
+     * @apiParam (参数) {Number} id 路由资源id
      * @apiParamExample {json} 请求示例
      * {
      *  'id': 1,
@@ -378,7 +378,7 @@ class RouteResource extends BaseController {
      * @apiName routeResourceEdit
      * @apiGroup 路由资源
      *
-     * @apiParam (参数) {Number} title='empty string' 路由资源id
+     * @apiParam (参数) {Number} id 路由资源id
      * @apiParam (参数) {String} title='empty string' 菜单名称
      * @apiParam (参数) {String} path='empty string' 路由地址
      * @apiParam (参数) {String} name='empty string' 路由名称
@@ -405,7 +405,6 @@ class RouteResource extends BaseController {
      *  "breadcrumb":false,
      *  "parent_id":0
      *}
-
      * @apiSuccess (返回字段) {Number} code 状态码
      * @apiSuccess (返回字段) {String} message  消息
      *
@@ -460,6 +459,86 @@ class RouteResource extends BaseController {
             } else {
                 $code = 10003;
                 throw new Exception('保存失败');
+            }
+        } catch (Exception $e) {
+            $data    = null;
+            $message = $e->getMessage();
+        }
+        return json(['code' => $code, 'message' => $message, 'data' => $data]);
+    }
+
+    /**
+     * @api {get} /RouteResource/routeResourceDelete 路由资源删除
+     * @apiVersion 0.0.1
+     * @apiName routeResourceDelete
+     * @apiGroup 路由资源
+     *
+     * @apiParam (参数) {Number} id 用户id
+     * @apiParamExample {json} 请求示例
+     * {
+     *  'id': 1,
+     * }
+     * @apiSuccess (返回字段) {Number} code 状态码
+     * @apiSuccess (返回字段) {String} message  消息
+     *
+     * @apiSuccessExample 成功示例
+     * HTTP/1.1 200 Success
+     * {
+     *      "code":20000,
+     *      "message":"SUCCESS",
+     *      "data":null
+     * }
+     * @apiErrorExample 失败示例1
+     * {
+     *    'code': '10001'
+     * }
+     * @apiErrorExample 失败示例2
+     * {
+     *    'code': '10002'
+     * }
+     * @apiErrorExample 失败示例3
+     * {
+     *    'code': '10003'
+     * }
+     * @apiErrorExample 失败示例3
+     * {
+     *    'code': '10004'
+     * }
+     * @apiError (错误代码) 10001 数据验证失败
+     * @apiError (错误代码) 10002 该菜单下还有子菜单，不能删除
+     * @apiError (错误代码) 10003 角色已使用该路由资源
+     * @apiError (错误代码) 10004 数据库删除失败
+     */
+    public function routeResourceDelete(): Response {
+        $request = $this->request;
+        $request->filter(['trim']);
+        $code    = 20000;
+        $message = 'SUCCESS';
+        try {
+            $param = $request->param();
+            try {
+                validate(ValidateRouteResource::class)->scene('delete')->check($param);
+            } catch (ValidateException $e) {
+                // 验证失败 输出错误信息
+                $code = 10001;
+                throw new Exception($e->getError());
+            }
+            //查找是否还有子类，角色是否拥有这个菜单资源，提示不能删除
+            $hasChild = Db::name('route_resource')
+                ->where(['parent_id' => $param['id']])->find();
+            if ($hasChild) {
+                $code = 10002;
+                throw new Exception('该菜单下还有子菜单，不能删除');
+            }
+            //*wait code = 10003 角色表 权限字段有用到 也不能删除
+            $res = Db::name('route_resource')
+                ->where(['id' => $param['id']])
+                ->delete();
+            if ($res > 0) {
+                $data = null;
+            } else {
+                $code = 10004;
+                throw new Exception('删除失败');
             }
         } catch (Exception $e) {
             $data    = null;

@@ -56,5 +56,8 @@ class RouteResource extends Validate {
             'component',
             'parent_id',
         ],
+        'delete' => [
+            'id',
+        ],
     ];
 }
