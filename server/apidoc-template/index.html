@@ -12,8 +12,7 @@
   <!-- <link href="img/favicon.ico" rel="icon" type="image/x-icon"> -->
   <script src="vendor/polyfill.js"></script>
 </head>
-<body class="container-fluid">
-
+<body>
 <script id="template-sidenav" type="text/x-handlebars-template">
 <nav id="scrollingNav">
   <div class="sidenav-search">
@@ -31,7 +30,10 @@
         {{/if}}
       {{else}}
         <li class="{{#if hidden}}hide {{/if}}" data-group="{{group}}" data-name="{{name}}" data-version="{{version}}">
-          <a href="#api-{{group}}-{{name}}" title="{{url}}" data-group="show-api-{{group}}" data-name="show-api-{{group}}-{{name}}" class="nav-list-item show-api api-{{group}}-{{name}}-init">{{title}}<div class="nav-list-url-item hide">{{url}}</div></a>
+          <a href="#api-{{group}}-{{name}}" title="{{url}}" data-group="show-api-{{group}}" data-name="show-api-{{group}}-{{name}}" class="nav-list-item show-api api-{{group}}-{{name}}-init">
+            <div class="pull-left typ-name typ-{{toLowerCase type}}"><span>{{toUpperCase type}}</span></div>
+            <div class="nav-list-url-item">&nbsp;{{title}}</div>
+          </a>
         </li>
       {{/if}}
     {{/if}}
@@ -106,81 +108,110 @@
 </script>
 
 <script id="template-article" type="text/x-handlebars-template">
-  <article id="api-{{article.group}}-{{article.name}}-{{article.version}}" {{#if hidden}}class="hide"{{/if}} data-group="{{article.group}}" data-name="{{article.name}}" data-version="{{article.version}}">
-    <div class="pull-left">
-      <h1>{{underscoreToSpace article.groupTitle}}{{#if article.title}} - {{article.title}}{{/if}}</h1>
+  <div class="row pre-{{toLowerCase article.type}}">
+    <div class="col-md-6">
+      <article id="api-{{article.group}}-{{article.name}}-{{article.version}}" {{#if hidden}}class="hide"{{/if}} data-group="{{article.group}}" data-name="{{article.name}}" data-version="{{article.version}}">
+        <div class="pull-left">
+          <h1>{{underscoreToSpace article.groupTitle}}{{#if article.title}} - {{article.title}}{{/if}}</h1>
+        </div>
+        {{#if template.withCompare}}
+        <div class="pull-right">
+          <div class="btn-group">
+            <button class="version btn btn-default dropdown-toggle" data-toggle="dropdown">
+              <strong>{{article.version}}</strong>&nbsp;<span class="caret"></span>
+            </button>
+            <ul class="versions dropdown-menu open-left">
+              <li class="disabled"><a href="#">{{__ "compare changes to:"}}</a></li>
+            {{#each versions}}
+              <li class="version"><a href="#">{{this}}</a></li>
+            {{/each}}
+            </ul>
+          </div>
+        </div>
+        {{/if}}
+        <div class="clearfix"></div>
+
+        {{#if article.author}}<h4 class="muted">Authored by: {{article.author}}</h4>{{/if}}
+
+        {{#if article.deprecated}}
+          <p class="deprecated"><span>{{__ "DEPRECATED"}}</span>
+            {{{markdown article.deprecated.content}}}
+          </p>
+        {{/if}}
+
+        {{#if article.description}}
+          <p>{{{nl2br article.description}}}</p>
+        {{/if}}
+        <span class="type type__{{toLowerCase article.type}}">{{toLowerCase article.type}}</span>
+        <pre data-type="{{toLowerCase article.type}}"><code class="language-http">{{article.url}}</code></pre>
+
+        {{#if article.permission}}
+          <p>
+            {{__ "Permission:"}}
+            {{#each article.permission}}
+              {{name}}
+              {{#if title}}
+              <button type="button" class="btn btn-info btn-xs" data-title="{{title}}" data-content="{{nl2br description}}" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover">
+                  <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+              </button>
+              {{/if}}
+            {{/each}}
+          </p>
+        {{/if}}
+
+        {{subTemplate "article-param-block" params=article.header _hasType=_hasTypeInHeaderFields section="header"}}
+        {{subTemplate "article-param-block" params=article.parameter _hasType=_hasTypeInParameterFields section="parameter"}}
+        {{subTemplate "article-param-block" params=article.success _hasType=_hasTypeInSuccessFields section="success"}}
+        {{subTemplate "article-param-block" params=article.error _col1="Name" _hasType=_hasTypeInErrorFields section="error"}}
+
+        {{subTemplate "article-sample-request" article=article id=id}}
+      </article>
     </div>
-    {{#if template.withCompare}}
-    <div class="pull-right">
-      <div class="btn-group">
-        <button class="version btn btn-default dropdown-toggle" data-toggle="dropdown">
-          <strong>{{article.version}}</strong>&nbsp;<span class="caret"></span>
-        </button>
-        <ul class="versions dropdown-menu open-left">
-          <li class="disabled"><a href="#">{{__ "compare changes to:"}}</a></li>
-        {{#each versions}}
-          <li class="version"><a href="#">{{this}}</a></li>
-        {{/each}}
+    <div class="col-md-6">
+      {{subTemplate "article-param-block-example" params=article.parameter _hasType=_hasTypeInParameterFields section="parameter"}}
+      {{#if_gt article.examples.length compare=0}}
+        <ul class="nav nav-tabs nav-tabs-examples">
+          {{#each article.examples}}
+            <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
+              <a href="#examples-{{../id}}-{{@index}}">{{title}}</a>
+            </li>
+          {{/each}}
         </ul>
-      </div>
-    </div>
-    {{/if}}
-    <div class="clearfix"></div>
 
-    {{#if article.author}}<h4 class="muted">Authored by: {{article.author}}</h4>{{/if}}
-
-    {{#if article.deprecated}}
-      <p class="deprecated"><span>{{__ "DEPRECATED"}}</span>
-        {{{markdown article.deprecated.content}}}
-      </p>
-    {{/if}}
-
-    {{#if article.description}}
-      <p>{{{nl2br article.description}}}</p>
-    {{/if}}
-    <span class="type type__{{toLowerCase article.type}}">{{toLowerCase article.type}}</span>
-    <pre data-type="{{toLowerCase article.type}}"><code class="language-http">{{article.url}}</code></pre>
-
-    {{#if article.permission}}
-      <p>
-        {{__ "Permission:"}}
-        {{#each article.permission}}
-          {{name}}
-          {{#if title}}
-          <button type="button" class="btn btn-info btn-xs" data-title="{{title}}" data-content="{{nl2br description}}" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover">
-              <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-          </button>
-          {{/if}}
-        {{/each}}
-      </p>
-    {{/if}}
-
-    {{!-- CODE EXAMPLES IN TABS --}}
-    {{#if_gt article.examples.length compare=0}}
-      <ul class="nav nav-tabs nav-tabs-examples">
+        <div class="tab-content">
         {{#each article.examples}}
-          <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
-            <a href="#examples-{{../id}}-{{@index}}">{{title}}</a>
-          </li>
+          <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="examples-{{../id}}-{{@index}}">
+            <pre data-type="{{type}}"><code class="language-{{type}}">{{content}}</code></pre>
+          </div>
         {{/each}}
+        </div>
+      {{/if_gt}}
+      {{subTemplate "article-param-block-example" params=article.success _hasType=_hasTypeInSuccessFields section="success"}}
+      {{subTemplate "article-param-block-example" params=article.error _col1="Name" _hasType=_hasTypeInErrorFields section="error"}}
+    </div>
+  </div>
+</script>
+
+<script id="template-article-param-block-example" type="text/x-handlebars-template">
+  {{#if params}}
+    {{#if_gt params.examples.length compare=0}}
+      <ul class="nav nav-tabs nav-tabs-examples">
+      {{#each params.examples}}
+        <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
+          <a href="#{{../section}}-examples-{{../id}}-{{@index}}">{{title}}</a>
+        </li>
+      {{/each}}
       </ul>
 
       <div class="tab-content">
-      {{#each article.examples}}
-        <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="examples-{{../id}}-{{@index}}">
-          <pre data-type="{{type}}"><code class="language-{{type}}">{{content}}</code></pre>
+      {{#each params.examples}}
+        <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="{{../section}}-examples-{{../id}}-{{@index}}">
+        <pre data-type="{{type}}"><code class="language-{{type}}">{{reformat content type}}</code></pre>
         </div>
       {{/each}}
       </div>
     {{/if_gt}}
-
-    {{subTemplate "article-param-block" params=article.header _hasType=_hasTypeInHeaderFields section="header"}}
-    {{subTemplate "article-param-block" params=article.parameter _hasType=_hasTypeInParameterFields section="parameter"}}
-    {{subTemplate "article-param-block" params=article.success _hasType=_hasTypeInSuccessFields section="success"}}
-    {{subTemplate "article-param-block" params=article.error _col1="Name" _hasType=_hasTypeInErrorFields section="error"}}
-
-    {{subTemplate "article-sample-request" article=article id=id}}
-  </article>
+  {{/if}}
 </script>
 
 <script id="template-article-param-block" type="text/x-handlebars-template">
@@ -220,23 +251,6 @@
         </tbody>
       </table>
     {{/each}}
-    {{#if_gt params.examples.length compare=0}}
-      <ul class="nav nav-tabs nav-tabs-examples">
-      {{#each params.examples}}
-        <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
-          <a href="#{{../section}}-examples-{{../id}}-{{@index}}">{{title}}</a>
-        </li>
-      {{/each}}
-      </ul>
-
-      <div class="tab-content">
-      {{#each params.examples}}
-        <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="{{../section}}-examples-{{../id}}-{{@index}}">
-        <pre data-type="{{type}}"><code class="language-{{type}}">{{reformat content type}}</code></pre>
-        </div>
-      {{/each}}
-      </div>
-    {{/if_gt}}
   {{/if}}
 </script>
 
@@ -663,7 +677,7 @@
 <div class="container-fluid">
   <div class="row">
     <div id="sidenav" class="span2"></div>
-    <div id="content">
+    <div id="content" class="col-sm-9 col-md-10">
       <div id="project"></div>
       <div id="header"></div>
       <div id="sections"></div>

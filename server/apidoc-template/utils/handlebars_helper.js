@@ -143,6 +143,13 @@ define([
     /**
      *
      */
+    Handlebars.registerHelper('toUpperCase', function(value) {
+        return (value && typeof value === 'string') ? value.toUpperCase() : '';
+    });
+
+    /**
+     *
+     */
     Handlebars.registerHelper('splitFill', function(value, splitChar, fillChar) {
         var splits = value.split(splitChar);
         return new Array(splits.length).join(fillChar) + splits[splits.length - 1];

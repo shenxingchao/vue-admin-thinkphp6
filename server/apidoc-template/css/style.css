@@ -1,12 +1,8 @@
 /* ------------------------------------------------------------------------------------------
  * Content
  * ------------------------------------------------------------------------------------------ */
-body {
-  max-width: 1440px;
-}
-
 body, p, a, div, th, td {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Roboto", monospace, sans-serif;
   font-weight: 400;
   font-size: 16px;
 }
@@ -22,7 +18,7 @@ body, p, a, div, th, td {
 
 td.code {
   font-size: 14px;
-  font-family: "Source Code Pro", monospace;
+  font-family: "Roboto", monospace, sans-serif;
   font-style: normal;
   font-weight: 400;
 }
@@ -33,8 +29,9 @@ td.default-value{
 
 #content {
   padding-top: 16px;
-  z-Index: -1;
-  margin-left: 340px;
+  /* z-Index: -1; */
+  margin-left: 260px;
+  width: calc(100% - 260px) !important;
 }
 
 p {
@@ -82,19 +79,19 @@ td p{
 
 h1 {
   font-family: IBM Plex Mono,Space Grotesk,Roboto Slab,sans-serif;
-  font-weight: normal;
-  font-size: 44px;
-  line-height: 50px;
-  margin: 0 0 10px 0;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 56px;
+  margin: 0 0 0 0;
   padding: 0;
 }
 
 h2 {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: normal;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 40px;
-  margin: 0 0 20px 0;
+  margin: 0 0 0 0;
   padding: 0;
 }
 
@@ -106,10 +103,10 @@ section {
 section h1 {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 700;
-  font-size: 32px;
-  line-height: 40px;
+  font-size: 24px;
+  line-height: 24px;
   padding-bottom: 14px;
-  margin: 0 0 20px 0;
+  margin: 0 0 10px 0;
   padding: 0;
 }
 
@@ -120,31 +117,32 @@ article {
 article h1 {
   font-family: "Source Sans Pro Bold", sans-serif;
   font-weight: 600;
-  font-size: 24px;
-  line-height: 26px;
+  font-size: 18px;
+  line-height: 36px;
+  margin: 0 0 10px 0;
 }
 
 article h2 {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 32px;
   margin: 0 0 10px 0;
 }
 
 article h3 {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
-  font-size: 16px;
-  line-height: 18px;
+  font-size: 14px;
+  line-height: 28px;
   margin: 0 0 10px 0;
 }
 
 article h4 {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 12px;
+  line-height: 24px;
   margin: 0 0 8px 0;
 }
 
@@ -155,18 +153,16 @@ table {
 }
 
 th {
-  background-color: #f7f7f7;
   text-align: left;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 700;
   padding: 4px 8px;
-  border: #e0e0e0 1px solid;
 }
 
 td {
   vertical-align: middle;
   padding: 5px 8px 5px 8px;
-  border: #e0e0e0 1px solid;
+  border-bottom: #e0e0e0 1px solid;
 }
 
 #generator .content {
@@ -251,7 +247,7 @@ td {
  * Sidenav
  * ------------------------------------------------------------------------------------------ */
 .sidenav {
-  width: 300px;
+  width: 260px;
   margin: 0;
   position: fixed;
   top: 56px;
@@ -259,10 +255,8 @@ td {
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: #fafafa;
+  background-color: #282A36;
   z-index: 10;
-  border-top: 1px solid #cccccc;
-  border-right: 1px solid #cccccc;
 }
 
 .sidenav > li > a {
@@ -271,31 +265,43 @@ td {
   margin: 0;
   padding: 4px 14px;
   border: 0;
-  font-family: 'Microsoft YaHei',Arial,"Source Sans Pro", sans-serif;
+  font-family: "Roboto", monospace, sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: #555555;
+  color: #ffffff;
+}
+.sidenav > li > a > .nav-list-url-item{
+  font-size: 12px;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 22px;
+}
+
+.sidenav > li > a > .nav-list-url-item:hover{
+  color: #000 !important;
 }
 
 .sidenav > li.nav-header > a {
   padding: 4px 10px;
   width: 100%;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Roboto", monospace, sans-serif;
   font-size: 14px;
-  color: #333333;
+  color: #ffffff;
 }
 
 .sidenav > li.active > a {
     position: relative;
     z-index: 2;
-    background-color: #e5e5e5;
 }
 
 .sidenav > li:hover a{
-    background-color: #f1f1f1;
+    background-color: #ffffff;
+    color: #000 !important;
 }
 
 .sidenav > li.has-modifications a {
@@ -303,19 +309,17 @@ td {
 }
 
 .sidenav > li.is-new a {
-  border-left: #e5e5e5 4px solid;
 }
 
 /* ------------------------------------------------------------------------------------------
  * Side nav search
  * ------------------------------------------------------------------------------------------ */
 .sidenav-search {
-  width: 300px;
+  width: 260px;
   left: 0px;
   position: fixed;
   padding: 10px 20px 10px 20px;
-  background-color: #fafafa;
-  border-right: 1px solid #cccccc;
+  background-color: #282A36;
   z-index: 11;
 }
 
@@ -569,3 +573,63 @@ p.deprecated span{
   }
 
 } /* /@media print */
+
+.pre-get {
+  background: rgba(97, 175, 254, 0.1);
+  border-width: 1px;
+  border-style: dotted;
+  border-color: rgb(97, 175, 254);
+  border-image: initial;
+  margin-bottom: 20px;
+}
+
+.pre-post {
+  background: rgba(73, 204, 144, 0.1);
+  border-width: 1px;
+  border-style: dotted;
+  border-color: rgb(73, 204, 144);
+  border-image: initial;
+  margin-bottom: 20px;
+}
+.nav-tabs-examples{
+  background: #282A36;
+  border: none;
+}
+.nav-tabs{
+  background: #181A22;
+  border-top: 4px solid #090A0E;
+}
+.nav-tabs>li>a{
+  color: #cccccc;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{
+  color: #ffffff;
+  background-color: #282A36;
+  border: 1px solid #282A36 !important;
+}
+pre[class*="language-"]{
+  margin: 0;
+  border: none;
+  border-radius: 0;
+}
+.pre-get h2{
+  color: rgb(15, 128, 240);
+}
+.pre-post h2{
+  color: rgb(7, 187, 106);
+}
+.typ-get{
+  color: rgb(15, 128, 240);
+  font-size: 14px;
+  font-weight: bold;
+  min-width: 32px;
+}
+.typ-post{
+  color: rgb(7, 187, 106);
+  font-size: 14px;
+  font-weight: bold;
+  min-width: 32px;
+}
+.col-md-6{
+  padding-right: 0;
+}
