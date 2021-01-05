@@ -17,10 +17,10 @@ body, p, a, div, th, td {
 }
 
 td.code {
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Roboto", monospace, sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: bold;
 }
 
 td.default-value{
