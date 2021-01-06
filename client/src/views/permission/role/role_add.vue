@@ -23,7 +23,7 @@
 </template>
  
 <script>
-import { articleAdd } from '@/api/article'
+import { roleAdd } from '@/api/permission/role'
 import { routeResourceNodes } from '@/api/permission/route_resource'
 export default {
   name: 'RoleAdd',
@@ -32,7 +32,8 @@ export default {
     return {
       ruleForm: {
         role_name: '', //角色名称
-        routeResourceIds: [], //权限Id数组
+        routeResourceIds: [], //全选中节点和半选中节点
+        tempRouteResourceIds: [], //全选中节点
       },
       rules: {
         role_name: [
@@ -65,10 +66,12 @@ export default {
       const _this = this
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          //  this.ruleForm.permissionSrcIds = [].concat(this.$refs.treeSrc.getCheckedKeys(), this.$refs.treeSrc.getHalfCheckedKeys())
-          // this.ruleForm.tempMenuIds = this.$refs.tree.getCheckedKeys()
-          // this.ruleForm.tempSrcIds = this.$refs.treeSrc.getCheckedKeys()
-          articleAdd(this.ruleForm)
+          this.ruleForm.routeResourceIds = [].concat(
+            this.$refs.tree.getCheckedKeys(),
+            this.$refs.tree.getHalfCheckedKeys()
+          )
+          this.ruleForm.tempRouteResourceIds = this.$refs.tree.getCheckedKeys()
+          roleAdd(this.ruleForm)
             .then((res) => {
               this.$message({
                 message: '添加成功',
