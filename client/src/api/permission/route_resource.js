@@ -53,3 +53,11 @@ export function routeResourceDelete(params) {
     params: params
   })
 }
+
+export function routeResourceNodes(params) {
+  return request({
+    url: '/RouteResource/routeResourceNodes',
+    method: 'get',
+    params: params
+  })
+}

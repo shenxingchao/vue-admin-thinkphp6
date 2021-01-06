@@ -61,6 +61,26 @@ class RouteResource extends BaseController {
     }
 
     /**
+     * 递归返回可使用格式的权限节点
+     * @param $data
+     * @return array
+     */
+    private function executeTreeArr($data): array{
+        $res = array();
+        foreach ($data as $key => $value) {
+            $arr = [
+                'id'    => $value['id'],
+                'label' => $value['title'],
+            ];
+            if (!empty($value['children'])) {
+                $arr['children'] = $this->executeTreeArr($value['children']);
+            }
+            $res[$key] = $arr;
+        }
+        return $res;
+    }
+
+    /**
      * @api {post} /RouteResource/routeResourceAdd 路由资源添加
      * @apiVersion 0.0.1
      * @apiName routeResourceAdd
@@ -540,6 +560,24 @@ class RouteResource extends BaseController {
                 $code = 10004;
                 throw new Exception('删除失败');
             }
+        } catch (Exception $e) {
+            $data    = null;
+            $message = $e->getMessage();
+        }
+        return json(['code' => $code, 'message' => $message, 'data' => $data]);
+    }
+
+    public function routeResourceNodes(): Response {
+        $request = $this->request;
+        $request->filter(['trim']);
+        $code    = 20000;
+        $message = 'SUCCESS';
+        try {
+            $param                  = $request->param();
+            $route_resource_options = Db::name('route_resource')->select();
+            $route_resource_options = $this->getTreeArr($route_resource_options);
+            $route_resource_nodes   = $this->executeTreeArr($route_resource_options);
+            $data                   = $route_resource_nodes;
         } catch (Exception $e) {
             $data    = null;
             $message = $e->getMessage();

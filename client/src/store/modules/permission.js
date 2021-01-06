@@ -170,6 +170,19 @@ const actions = {
                       affix: false,
                       breadcrumb: true
                     }
+                  },
+                  {
+                    path: 'role_add',
+                    name: 'RoleAdd',
+                    component: 'RoleAdd',
+                    alwaysShow: false,
+                    hidden: true,
+                    meta: {
+                      title: '角色添加',
+                      icon: '',
+                      affix: false,
+                      breadcrumb: true
+                    }
                   }
                 ]
               }

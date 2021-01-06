@@ -15,7 +15,7 @@
               <el-button icon="el-icon-refresh-left" @click.native="$refs['searchForm'].resetFields();onSubmit()">重置
               </el-button>
               <el-button type="primary" icon="el-icon-plus" size="mini"
-                         @click.native="$router.push('/article/article-add')">添加
+                         @click.native="$router.push('/permission/role/role_add')">添加
               </el-button>
               <el-button type="danger" icon="el-icon-delete" size="mini" @click.native="handleDeleteRows">删除</el-button>
             </el-form-item>

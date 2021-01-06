@@ -21,4 +21,6 @@ Route::group('auth', function () {
     Route::get('RouteResource/routeResourceEdit', 'RouteResource/routeResourceEdit');
     //路由资源删除
     Route::get('RouteResource/routeResourceDelete', 'RouteResource/routeResourceDelete');
+    //路由资源节点树
+    Route::get('RouteResource/routeResourceNodes', 'RouteResource/routeResourceNodes');
 });
