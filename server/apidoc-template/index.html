@@ -15,6 +15,7 @@
 <body>
 <script id="template-sidenav" type="text/x-handlebars-template">
 <nav id="scrollingNav">
+  <h1 class="api-title">ApiDoc</h1>
   <div class="sidenav-search">
     <input class="form-control search" type="text" placeholder="{{__ "请输入搜索关键词..."}}">
     <span class="search-reset">x</span>
@@ -109,7 +110,7 @@
 
 <script id="template-article" type="text/x-handlebars-template">
   <div class="row pre-{{toLowerCase article.type}}">
-    <div class="col-md-6">
+    <div class="col-md-6  layout-left-{{toLowerCase article.type}}">
       <article id="api-{{article.group}}-{{article.name}}-{{article.version}}" {{#if hidden}}class="hide"{{/if}} data-group="{{article.group}}" data-name="{{article.name}}" data-version="{{article.version}}">
         <div class="pull-left">
           <h1>{{underscoreToSpace article.groupTitle}}{{#if article.title}} - {{article.title}}{{/if}}</h1>
@@ -143,7 +144,7 @@
           <p>{{{nl2br article.description}}}</p>
         {{/if}}
         <span class="type type__{{toLowerCase article.type}}">{{toLowerCase article.type}}</span>
-        <pre data-type="{{toLowerCase article.type}}"><code class="language-http">{{article.url}}</code></pre>
+        <pre class="http-{{toLowerCase article.type}}" data-type="{{toLowerCase article.type}}"><code class="language-http">{{article.url}}</code></pre>
 
         {{#if article.permission}}
           <p>
@@ -167,7 +168,7 @@
         {{subTemplate "article-sample-request" article=article id=id}}
       </article>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 pre-code-{{toLowerCase article.type}}">
       {{subTemplate "article-param-block-example" params=article.parameter _hasType=_hasTypeInParameterFields section="parameter"}}
       {{#if_gt article.examples.length compare=0}}
         <ul class="nav nav-tabs nav-tabs-examples">
@@ -260,7 +261,7 @@
       <form class="form-horizontal">
         <fieldset>
             <div class="form-group">
-              <label class="col-md-3 control-label" for="{{../id}}-sample-request-url"></label>
+              <!-- <label class="col-md-3 control-label" for="{{../id}}-sample-request-url"></label> -->
               <div class="input-group">
                 <input id="{{../id}}-sample-request-url" type="text" class="form-control sample-request-url" value="{{article.sampleRequest.0.url}}" />
                 <span class="input-group-addon">{{__ "url"}}</span>
@@ -275,7 +276,7 @@
             <div class="{{../id}}-sample-request-header-fields">
               {{#each this}}
               <div class="form-group">
-                <label class="col-md-3 control-label" for="sample-request-header-field-{{field}}">{{field}}</label>
+                <!-- <label class="col-md-3 control-label" for="sample-request-header-field-{{field}}">{{field}}</label> -->
                 <div class="input-group">
                   <input type="text" placeholder="{{field}}" value="{{defaultValue}}" id="sample-request-header-field-{{field}}" class="form-control sample-request-header" data-sample-request-header-name="{{field}}" data-sample-request-header-group="sample-request-header-{{@../index}}">
                   <span class="input-group-addon">{{{type}}}</span>
@@ -311,7 +312,7 @@
               <div class="form-group">
                 <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
                 <div class="input-group">
-                  <input id="sample-request-param-field-{{field}}" type="{{setInputType type}}" placeholder="{{field}}" class="form-control sample-request-param" data-sample-request-param-name="{{field}}" data-sample-request-param-group="sample-request-param-{{@../index}}" {{#if optional}}data-sample-request-param-optional="true"{{/if}}>
+                  <input id="sample-request-param-field-{{field}}" type="{{setInputType type}}" class="form-control sample-request-param" data-sample-request-param-name="{{field}}" data-sample-request-param-group="sample-request-param-{{@../index}}" {{#if optional}}data-sample-request-param-optional="true"{{/if}}>
                   <div class="input-group-addon">{{{type}}}</div>
                 </div>
               </div>

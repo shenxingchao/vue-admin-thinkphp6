@@ -250,7 +250,7 @@ td {
   width: 260px;
   margin: 0;
   position: fixed;
-  top: 56px;
+  top: 112px;
   left: 0;
   bottom: 0;
   overflow-x: hidden;
@@ -273,6 +273,9 @@ td {
   text-overflow: ellipsis;
   color: #ffffff;
 }
+.nav>li>a:hover, .nav>li>a:focus{
+  background: none !important;
+}
 .sidenav > li > a > .nav-list-url-item{
   font-size: 12px;
   color: #ffffff;
@@ -280,10 +283,12 @@ td {
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 22px;
+  transition: all .3s linear;
 }
 
+
 .sidenav > li > a > .nav-list-url-item:hover{
-  color: #000 !important;
+  transform: translateX(20px);
 }
 
 .sidenav > li.nav-header > a {
@@ -299,16 +304,11 @@ td {
     z-index: 2;
 }
 
-.sidenav > li:hover a{
-    background-color: #ffffff;
-    color: #000 !important;
-}
-
 .sidenav > li.has-modifications a {
   border-right: #60d060 4px solid;
 }
 
-.sidenav > li.is-new a {
+.sidenav > li.is-new{
 }
 
 /* ------------------------------------------------------------------------------------------
@@ -317,6 +317,7 @@ td {
 .sidenav-search {
   width: 260px;
   left: 0px;
+  top: 56px;
   position: fixed;
   padding: 10px 20px 10px 20px;
   background-color: #282A36;
@@ -325,6 +326,7 @@ td {
 
 .sidenav-search .search {
   height: 36px;
+  border-radius: 20px;
 }
 
 .search-reset {
@@ -602,6 +604,10 @@ p.deprecated span{
 .nav-tabs>li>a{
   color: #cccccc;
 }
+.nav-tabs>li>a:hover,.nav-tabs>li>a:focus{
+  color: #333333;
+}
+
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{
   color: #ffffff;
   background-color: #282A36;
@@ -630,6 +636,39 @@ pre[class*="language-"]{
   font-weight: bold;
   min-width: 32px;
 }
-.col-md-6{
-  padding-right: 0;
+.pre-code-get,.pre-code-post{
+  padding: 0;
+}
+.layout-left-get{
+  border-right: 1px dotted rgb(97, 175, 254);
+}
+.layout-left-post{
+  border-right: 1px dotted rgb(73, 204, 144);
+}
+.form-horizontal .form-group{
+  padding: 0 15px;
+}
+.http-get{
+  border:1px dotted rgba(7, 134, 253, 0.2) !important;
+  background: rgba(7, 134, 253, 0.1) !important;
+  border-radius: 4px;
+}
+.http-post{
+  border:1px dotted rgba(33,204,125,.2) !important;
+  background:rgba(33,204,125,.1) !important;
+  border-radius: 4px;
+}
+.language-http{
+  color: #333333 !important;
+}
+#scrollingNav .api-title{
+  position: fixed;
+    top: 0;
+    left: 0;
+    height: 56px;
+    text-align: center;
+    width: 260px;
+    background: #282a36;
+    color: #ffffff;
+    font-size: 20px;
 }
