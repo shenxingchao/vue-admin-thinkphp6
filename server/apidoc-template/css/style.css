@@ -605,12 +605,14 @@ p.deprecated span{
   color: #cccccc;
 }
 .nav-tabs>li>a:hover,.nav-tabs>li>a:focus{
-  color: #333333;
+  color: #ffffff;
+  background-color: #282A36 !important;
+  border: 1px solid #282A36 !important;
 }
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{
   color: #ffffff;
-  background-color: #282A36;
+  background-color: #282A36 !important;
   border: 1px solid #282A36 !important;
 }
 pre[class*="language-"]{
