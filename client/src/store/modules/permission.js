@@ -110,7 +110,7 @@ const actions = {
                     alwaysShow: false,
                     hidden: false,
                     meta: {
-                      title: '路由资源',
+                      title: '路由资源列表',
                       icon: 'table',
                       affix: false,
                       breadcrumb: true
@@ -124,7 +124,7 @@ const actions = {
                     hidden: true,
                     meta: {
                       title: '路由资源添加',
-                      icon: 'table',
+                      icon: '',
                       affix: false,
                       breadcrumb: true
                     }
@@ -137,6 +137,35 @@ const actions = {
                     hidden: true,
                     meta: {
                       title: '路由资源编辑',
+                      icon: '',
+                      affix: false,
+                      breadcrumb: true
+                    }
+                  }
+                ]
+              },
+              {
+                path: 'role',
+                name: 'Role',
+                component: 'Role',
+                redirect: '/permission/role/role_list',
+                alwaysShow: false,
+                hidden: false,
+                meta: {
+                  title: '角色管理',
+                  icon: '',
+                  affix: false,
+                  breadcrumb: false
+                },
+                children: [
+                  {
+                    path: 'role_list',
+                    name: 'RoleList',
+                    component: 'RoleList',
+                    alwaysShow: false,
+                    hidden: false,
+                    meta: {
+                      title: '角色列表',
                       icon: 'table',
                       affix: false,
                       breadcrumb: true

@@ -18,6 +18,8 @@ export const map = {
   RouteResourceAdd: () =>
     import('@/views/permission/route_resource/route_resource_add'), // 路由资源添加 level3
   RouteResourceEdit: () =>
-    import('@/views/permission/route_resource/route_resource_edit') // 路由资源编辑 level3
+    import('@/views/permission/route_resource/route_resource_edit'), // 路由资源编辑 level3
+  Role: () => import('@/views/permission/role/role'), // 角色管理 level2
+  RoleList: () => import('@/views/permission/role/role_list') // 角色列表 level2
 }
 export default map
