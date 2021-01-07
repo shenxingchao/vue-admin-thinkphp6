@@ -31,7 +31,7 @@ export function roleDetail(params) {
 export function roleEdit(ruleForm) {
   return request({
     url: 'Role/roleEdit',
-    method: 'post',
+    method: 'put',
     data: ruleForm
   })
 }
@@ -40,7 +40,7 @@ export function roleEdit(ruleForm) {
 export function roleDelete(ruleForm) {
   return request({
     url: 'Role/roleDelete',
-    method: 'post',
+    method: 'delete',
     data: ruleForm
   })
 }

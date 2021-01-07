@@ -10,10 +10,27 @@ Target Server Type    : MYSQL
 Target Server Version : 50643
 File Encoding         : 65001
 
-Date: 2021-01-04 17:14:41
+Date: 2021-01-07 17:34:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for vat_role
+-- ----------------------------
+DROP TABLE IF EXISTS `vat_role`;
+CREATE TABLE `vat_role` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `role_name` varchar(255) NOT NULL DEFAULT '' COMMENT '角色名称',
+  `route_resource_ids` text NOT NULL COMMENT '半选中和全选中id',
+  `temp_route_resource_ids` text NOT NULL COMMENT '全选中节点id',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='角色表';
+
+-- ----------------------------
+-- Records of vat_role
+-- ----------------------------
+INSERT INTO `vat_role` VALUES ('1', '超级管理员', '1,2,3,4,5,6,7,8,9,10,11', '1,2,3,4,5,6,7,8,9,10,11');
 
 -- ----------------------------
 -- Table structure for vat_route_resource
@@ -33,7 +50,7 @@ CREATE TABLE `vat_route_resource` (
   `breadcrumb` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '面包屑显示菜单',
   `parent_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '上级路由id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='路由资源表';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='路由资源表';
 
 -- ----------------------------
 -- Records of vat_route_resource
@@ -42,6 +59,10 @@ INSERT INTO `vat_route_resource` VALUES ('1', '首页', '/', 'Index', 'Layout', 
 INSERT INTO `vat_route_resource` VALUES ('2', '控制台', 'dashboard', 'Dashboard', 'Dashboard', '', '0', '0', 'dashboard', '1', '1', '1');
 INSERT INTO `vat_route_resource` VALUES ('3', '权限管理', '/permission', 'Permission', 'Layout', 'noRedirect', '1', '0', 'permission', '0', '1', '0');
 INSERT INTO `vat_route_resource` VALUES ('4', '路由资源管理', 'route_resource', 'RouteResource', 'RouteResource', '/permission/route_resource/route_resource_list', '0', '0', '', '0', '0', '3');
-INSERT INTO `vat_route_resource` VALUES ('5', '路由资源', 'route_resource_list', 'RouteResourceList', 'RouteResourceList', '', '0', '0', 'table', '0', '1', '4');
-INSERT INTO `vat_route_resource` VALUES ('6', '路由资源添加', 'route_resource_add', 'RouteResourceAdd', 'RouteResourceAdd', '', '0', '1', 'table', '0', '1', '4');
-INSERT INTO `vat_route_resource` VALUES ('7', '大三大四', '1', '2', '3', '', '0', '0', '', '0', '1', '3');
+INSERT INTO `vat_route_resource` VALUES ('5', '路由资源列表', 'route_resource_list', 'RouteResourceList', 'RouteResourceList', '', '0', '0', 'table', '0', '1', '4');
+INSERT INTO `vat_route_resource` VALUES ('6', '路由资源添加', 'route_resource_add', 'RouteResourceAdd', 'RouteResourceAdd', '', '0', '1', '', '0', '1', '4');
+INSERT INTO `vat_route_resource` VALUES ('7', '路由资源编辑', 'route_resource_edit', 'RouteResourceEdit', 'RouteResourceEdit', '', '0', '1', '', '0', '1', '4');
+INSERT INTO `vat_route_resource` VALUES ('8', '角色管理', 'role', 'Role', 'Role', '/permission/role/role_list', '0', '0', '', '0', '0', '3');
+INSERT INTO `vat_route_resource` VALUES ('9', '角色列表', 'role_list', 'RoleList', 'RoleList', '', '0', '0', 'table', '0', '1', '8');
+INSERT INTO `vat_route_resource` VALUES ('10', '角色添加', 'role_add', 'RoleAdd', 'RoleAdd', '', '0', '1', '', '0', '1', '8');
+INSERT INTO `vat_route_resource` VALUES ('11', '角色编辑', 'role_edit', 'RoleEdit', 'RoleEdit', '', '0', '1', '', '0', '1', '8');

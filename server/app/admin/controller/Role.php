@@ -277,7 +277,7 @@ class Role extends BaseController {
     }
 
     /**
-     * @api {post} /Role/roleEdit 角色编辑
+     * @api {put} /Role/roleEdit 角色编辑
      * @apiVersion 0.0.1
      * @apiName roleEdit
      * @apiGroup 角色
@@ -374,7 +374,7 @@ class Role extends BaseController {
     }
 
     /**
-     * @api {post} /Role/roleDelete 角色删除
+     * @api {delete} /Role/roleDelete 角色删除
      * @apiVersion 0.0.1
      * @apiName roleDelete
      * @apiGroup 角色

@@ -7,6 +7,7 @@ class Cors {
     public function handle($request, \Closure $next) {
         //构造方法 设置允许跨域请求
         header('Access-Control-Allow-Origin:*');
+        header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
         header("Access-Control-Allow-Credentials: true");
         header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept,  X-Token");
         header("Access-Control-Expose-Headers: Token,Code");

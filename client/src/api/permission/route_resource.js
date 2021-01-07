@@ -31,7 +31,7 @@ export function routeResourceList(params) {
 export function routeResourceEdit(ruleForm) {
   return request({
     url: '/RouteResource/routeResourceEdit',
-    method: 'post',
+    method: 'put',
     data: ruleForm
   })
 }
@@ -49,7 +49,7 @@ export function routeResourceDetail(params) {
 export function routeResourceDelete(ruleForm) {
   return request({
     url: '/RouteResource/routeResourceDelete',
-    method: 'post',
+    method: 'delete',
     data: ruleForm
   })
 }

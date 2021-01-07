@@ -230,7 +230,9 @@ td {
 }
 
 .type__put {
-  background-color: #e5c500;
+  color: #e5c500;
+  background-color: rgba(223, 202, 12, 0.1);
+  border: 1px solid rgba(223, 202, 12, 0.2)
 }
 
 .type__post {
@@ -240,7 +242,9 @@ td {
 }
 
 .type__delete {
-  background-color: #ed0039;
+  color: #ed0039;
+  background-color: rgba(223, 12, 47, 0.1);
+  border: 1px solid rgba(223, 12, 47, 0.2)
 }
 
 /* ------------------------------------------------------------------------------------------
@@ -308,8 +312,6 @@ td {
   border-right: #60d060 4px solid;
 }
 
-.sidenav > li.is-new{
-}
 
 /* ------------------------------------------------------------------------------------------
  * Side nav search
@@ -593,6 +595,25 @@ p.deprecated span{
   border-image: initial;
   margin-bottom: 20px;
 }
+
+.pre-put {
+  background: rgba(223,202,12,0.1);
+  border-width: 1px;
+  border-style: dotted;
+  border-color: rgb(223,202,12);
+  border-image: initial;
+  margin-bottom: 20px;
+}
+
+.pre-delete {
+  background: rgba(223,12,47,0.2);
+  border-width: 1px;
+  border-style: dotted;
+  border-color: rgb(223,12,47);
+  border-image: initial;
+  margin-bottom: 20px;
+}
+
 .nav-tabs-examples{
   background: #282A36;
   border: none;
@@ -626,6 +647,12 @@ pre[class*="language-"]{
 .pre-post h2{
   color: rgb(7, 187, 106);
 }
+.pre-put h2{
+  color: rgb(223,202,12);
+}
+.pre-delete h2{
+  color: rgb(223,12,47);
+}
 .typ-get{
   color: rgb(15, 128, 240);
   font-size: 14px;
@@ -634,6 +661,18 @@ pre[class*="language-"]{
 }
 .typ-post{
   color: rgb(7, 187, 106);
+  font-size: 14px;
+  font-weight: bold;
+  min-width: 32px;
+}
+.typ-put{
+  color: rgb(223,202,12);
+  font-size: 14px;
+  font-weight: bold;
+  min-width: 32px;
+}
+.typ-delete{
+  color: rgb(223,12,47);
   font-size: 14px;
   font-weight: bold;
   min-width: 32px;
@@ -647,6 +686,12 @@ pre[class*="language-"]{
 .layout-left-post{
   border-right: 1px dotted rgb(73, 204, 144);
 }
+.layout-left-put{
+  border-right: 1px dotted rgb(223,202,12);
+}
+.layout-left-delete{
+  border-right: 1px dotted rgb(223,12,47);
+}
 .form-horizontal .form-group{
   padding: 0 15px;
 }
@@ -658,6 +703,16 @@ pre[class*="language-"]{
 .http-post{
   border:1px dotted rgba(33,204,125,.2) !important;
   background:rgba(33,204,125,.1) !important;
+  border-radius: 4px;
+}
+.http-put{
+  border:1px dotted rgba(223,202,12,.2) !important;
+  background:rgba(223,202,12,.1) !important;
+  border-radius: 4px;
+}
+.http-delete{
+  border:1px dotted rgba(223,12,47,.2) !important;
+  background:rgba(223,12,47,.1) !important;
   border-radius: 4px;
 }
 .language-http{
