@@ -13,7 +13,8 @@ class CommonValidate extends Validate {
      * @var array
      */
     protected $rule = [
-        'other' => 'require',
+        'page'     => 'require',
+        'pageSize' => 'require',
     ];
 
     /**
@@ -23,6 +24,14 @@ class CommonValidate extends Validate {
      * @var array
      */
     protected $message = [
-        'other.require' => '字段不能为空',
+        'page.require'     => '缺少page字段',
+        'pageSize.require' => '缺少pageSize字段',
+    ];
+
+    protected $scene = [
+        'role_list' => [
+            'page',
+            'pageSize',
+        ],
     ];
 }

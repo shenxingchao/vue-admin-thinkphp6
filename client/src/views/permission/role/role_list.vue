@@ -28,7 +28,8 @@
 
 <script>
 import CustomTable from '@/components/CustomTable'
-import { articleLst, articleDelete } from '@/api/article'
+import { roleList } from '@/api/permission/role'
+import { articleList, articleDelete } from '@/api/article'
 export default {
   name: 'RoleList',
   components: {
@@ -45,57 +46,13 @@ export default {
           width: 60,
         },
         {
-          label: '标题',
-          prop: 'title',
-          width: 300,
+          label: '角色名称',
+          prop: 'role_name',
         },
         {
-          label: '图片',
-          prop: 'image',
-          render: (row) => {
-            return '<img  src="' + row.image + '" class="table-img"/>'
-          },
-        },
-        {
-          label: '作者',
-          prop: 'author',
-        },
-        {
-          label: '推荐',
-          prop: 'recommend',
-          component: (row) => {
-            return row.recommend
-              ? { is: 'custom-tag', type: 'success', title: '是' }
-              : { is: 'custom-tag', type: 'danger', title: '否' }
-          },
-        },
-        {
-          label: '置顶',
-          prop: 'top',
-          component: (row) => {
-            return row.top
-              ? { is: 'custom-tag', type: 'success', title: '是' }
-              : { is: 'custom-tag', type: 'danger', title: '否' }
-          },
-        },
-        {
-          label: '状态',
-          prop: 'status',
-          component: (row) => {
-            return row.status
-              ? { is: 'custom-tag', type: 'success', title: '启用' }
-              : { is: 'custom-tag', type: 'danger', title: '禁用' }
-          },
-        },
-        {
-          label: '添加时间',
-          prop: 'addtime',
-          width: 140,
-        },
-        {
-          label: '修改时间',
-          prop: 'updatetime',
-          width: 140,
+          label: '权限',
+          prop: 'permissions',
+          width: 500,
         },
       ],
       params: {
@@ -104,19 +61,15 @@ export default {
         pageSize: 10,
         pageSizes: [10, 20, 30, 50],
         keyword: '',
-        recommend: '',
-        top: '',
-        status: '',
       },
-      dialogVisible: false, //可移动弹窗
     }
   },
   async mounted() {
-    // await this.getArticleLst()
+    await this.getRoleList()
   },
   methods: {
-    getArticleLst() {
-      return articleLst(this.params)
+    getRoleList() {
+      return roleList(this.params)
         .then((res) => {
           this.List = res.data.data
           this.params.total = res.data.total
@@ -125,18 +78,18 @@ export default {
     },
     handleSizeChange(val) {
       this.params.pageSize = val
-      this.getArticleLst()
+      this.getRoleList()
     },
     handleCurrentChange(val) {
       this.params.page = val
-      this.getArticleLst()
+      this.getRoleList()
     },
     handleSelectionChange(val) {
       this.selectionIdList = val
     },
     handleRowDblClick(val) {
       this.$router.push({
-        path: '/article/article-edit',
+        path: '/permission/role/role_edit',
         query: {
           id: val,
         },
@@ -175,7 +128,7 @@ export default {
             message: '删除成功',
             type: 'success',
             onClose: function () {
-              self.getArticleLst()
+              self.getRoleList()
             },
           })
         })
@@ -184,7 +137,7 @@ export default {
     onSubmit() {
       this.params.page = 1
       this.params.pageSize = 10
-      this.getArticleLst()
+      this.getRoleList()
     },
   },
 }

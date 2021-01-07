@@ -21,6 +21,7 @@ export const map = {
     import('@/views/permission/route_resource/route_resource_edit'), // 路由资源编辑 level3
   Role: () => import('@/views/permission/role/role'), // 角色管理 level2
   RoleList: () => import('@/views/permission/role/role_list'), // 角色列表 level3
-  RoleAdd: () => import('@/views/permission/role/role_add') // 角色添加 level3
+  RoleAdd: () => import('@/views/permission/role/role_add'), // 角色添加 level3
+  RoleEdit: () => import('@/views/permission/role/role_edit') // 角色编辑 level3
 }
 export default map

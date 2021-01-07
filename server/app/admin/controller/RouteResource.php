@@ -114,6 +114,7 @@ class RouteResource extends BaseController {
 
      * @apiSuccess (返回字段) {Number} code 状态码
      * @apiSuccess (返回字段) {String} message  消息
+     * @apiSuccess (返回字段) {Array}  data  数据
      *
      * @apiSuccessExample 成功示例
      * HTTP/1.1 200 Success
@@ -185,6 +186,9 @@ class RouteResource extends BaseController {
      *
      * @apiSuccess (返回字段) {Number} code 状态码
      * @apiSuccess (返回字段) {String} message  消息
+     * @apiSuccess (返回字段) {Array}  data  数据
+     * @apiSuccess (返回字段) {String}  data.label  菜单名称
+     * @apiSuccess (返回字段) {Number}  data.value  id
      *
      * @apiSuccessExample 成功示例
      * HTTP/1.1 200 Success
@@ -320,18 +324,18 @@ class RouteResource extends BaseController {
      * @apiSuccess (返回字段) {Number} code 状态码
      * @apiSuccess (返回字段) {String} message  消息
      * @apiSuccess (返回字段) {Array} data  资源对象
-     * @apiSuccess (返回字段) {Number} id  id
-     * @apiSuccess (返回字段) {String} title  菜单名称
-     * @apiSuccess (返回字段) {String} path  路由地址
-     * @apiSuccess (返回字段) {String} name  路由名称
-     * @apiSuccess (返回字段) {String} component  映射组件名称
-     * @apiSuccess (返回字段) {String} redirect  路由重定向
-     * @apiSuccess (返回字段) {Boolean} always_show  显示根节点
-     * @apiSuccess (返回字段) {Boolean} hidden  菜单隐藏路由
-     * @apiSuccess (返回字段) {String} icon  svg图标
-     * @apiSuccess (返回字段) {Boolean} affix  菜单标签栏固定
-     * @apiSuccess (返回字段) {Boolean} breadcrumb  面包屑显示菜单
-     * @apiSuccess (返回字段) {Number} parent_id  资源对象
+     * @apiSuccess (返回字段) {Number} data.id  id
+     * @apiSuccess (返回字段) {String} data.title  菜单名称
+     * @apiSuccess (返回字段) {String} data.path  路由地址
+     * @apiSuccess (返回字段) {String} data.name  路由名称
+     * @apiSuccess (返回字段) {String} data.component  映射组件名称
+     * @apiSuccess (返回字段) {String} data.redirect  路由重定向
+     * @apiSuccess (返回字段) {Boolean} data.always_show  显示根节点
+     * @apiSuccess (返回字段) {Boolean} data.hidden  菜单隐藏路由
+     * @apiSuccess (返回字段) {String} data.icon  svg图标
+     * @apiSuccess (返回字段) {Boolean} data.affix  菜单标签栏固定
+     * @apiSuccess (返回字段) {Boolean} data.breadcrumb  面包屑显示菜单
+     * @apiSuccess (返回字段) {Number} data.parent_id  资源对象
      *
      * @apiSuccessExample 成功示例
      * HTTP/1.1 200 Success
@@ -427,6 +431,7 @@ class RouteResource extends BaseController {
      *}
      * @apiSuccess (返回字段) {Number} code 状态码
      * @apiSuccess (返回字段) {String} message  消息
+     * @apiSuccess (返回字段) {Array}  data  数据
      *
      * @apiSuccessExample 成功示例
      * HTTP/1.1 200 Success
@@ -488,7 +493,7 @@ class RouteResource extends BaseController {
     }
 
     /**
-     * @api {get} /RouteResource/routeResourceDelete 路由资源删除
+     * @api {post} /RouteResource/routeResourceDelete 路由资源删除
      * @apiVersion 0.0.1
      * @apiName routeResourceDelete
      * @apiGroup 路由资源
@@ -500,6 +505,7 @@ class RouteResource extends BaseController {
      * }
      * @apiSuccess (返回字段) {Number} code 状态码
      * @apiSuccess (返回字段) {String} message  消息
+     * @apiSuccess (返回字段) {Array}  data  数据
      *
      * @apiSuccessExample 成功示例
      * HTTP/1.1 200 Success
@@ -567,6 +573,67 @@ class RouteResource extends BaseController {
         return json(['code' => $code, 'message' => $message, 'data' => $data]);
     }
 
+    /**
+     * @api {get} /RouteResource/routeResourceNodes 路由资源节点树
+     * @apiVersion 0.0.1
+     * @apiName routeResourceNodes
+     * @apiGroup 路由资源
+     *
+     * @apiSuccess (返回字段) {Number} code 状态码
+     * @apiSuccess (返回字段) {String} message  消息
+     * @apiSuccess (返回字段) {Array} data 路由资源节点数组
+     * @apiSuccess (返回字段) {Number} data.id  路由资源id
+     * @apiSuccess (返回字段) {label} data.label  菜单名称
+     * @apiSuccess (返回字段) {children} data.children  路有资源子节点数组
+     *
+     * @apiSuccessExample 成功示例
+     * HTTP/1.1 200 Success
+     * {
+     *  "code":20000,
+     *  "message":"SUCCESS",
+     *  "data":[
+     *    {
+     *      "id":1,
+     *      "label":"首页",
+     *      "children":[
+     *        {
+     *          "id":2,
+     *          "label":"控制台"
+     *        }]
+     *    },
+     *    {
+     *      "id":3,
+     *      "label":"权限管理",
+     *      "children":[
+     *        {
+     *          "id":4,
+     *          "label":"路由资源管理",
+     *          "children":[
+     *            {
+     *              "id":5,
+     *              "label":"路由资源列表"
+     *            },
+     *            {
+     *              "id":6,
+     *              "label":"路由资源添加"
+     *            },
+     *            {
+     *              "id":7,
+     *              "label":"路由资源编辑"
+     *            }]
+     *        },
+     *        {
+     *          "id":8,
+     *          "label":"角色管理",
+     *          "children":[
+     *            {
+     *              "id":9,
+     *              "label":"角色列表"
+     *            }]
+     *        }]
+     *    }]
+     *}
+     */
     public function routeResourceNodes(): Response {
         $request = $this->request;
         $request->filter(['trim']);

@@ -183,6 +183,19 @@ const actions = {
                       affix: false,
                       breadcrumb: true
                     }
+                  },
+                  {
+                    path: 'role_edit',
+                    name: 'RoleEdit',
+                    component: 'RoleEdit',
+                    alwaysShow: false,
+                    hidden: true,
+                    meta: {
+                      title: '角色编辑',
+                      icon: '',
+                      affix: false,
+                      breadcrumb: true
+                    }
                   }
                 ]
               }

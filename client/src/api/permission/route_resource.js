@@ -45,15 +45,16 @@ export function routeResourceDetail(params) {
   })
 }
 
-//路由资源详情
-export function routeResourceDelete(params) {
+//路由资源删除
+export function routeResourceDelete(ruleForm) {
   return request({
     url: '/RouteResource/routeResourceDelete',
     method: 'get',
-    params: params
+    data: ruleForm
   })
 }
 
+//路由资源节点树
 export function routeResourceNodes(params) {
   return request({
     url: '/RouteResource/routeResourceNodes',

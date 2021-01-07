@@ -23,14 +23,15 @@
 </template>
  
 <script>
-import { roleAdd } from '@/api/permission/role'
+import { roleEdit, roleDetail } from '@/api/permission/role'
 import { routeResourceNodes } from '@/api/permission/route_resource'
 export default {
-  name: 'RoleAdd',
+  name: 'RoleEdit',
   components: {},
   data() {
     return {
       ruleForm: {
+        id: this.$route.query.id,
         role_name: '', //角色名称
         route_resource_ids: [], //全选中节点和半选中节点
         temp_route_resource_ids: [], //全选中节点
@@ -53,8 +54,18 @@ export default {
   },
   async mounted() {
     await this.getRouteResourceNodes()
+    await this.getRoleDetail()
   },
   methods: {
+    getRoleDetail() {
+      return roleDetail({ id: this.ruleForm.id })
+        .then((res) => {
+          this.ruleForm = res.data
+          this.$refs.tree.setCheckedKeys(this.ruleForm.temp_route_resource_ids)
+          this.expandedKeys = this.ruleForm.temp_route_resource_ids
+        })
+        .catch(() => {})
+    },
     getRouteResourceNodes() {
       return routeResourceNodes({})
         .then((res) => {
@@ -71,10 +82,10 @@ export default {
             this.$refs.tree.getHalfCheckedKeys()
           )
           this.ruleForm.temp_route_resource_ids = this.$refs.tree.getCheckedKeys()
-          roleAdd(this.ruleForm)
+          roleEdit(this.ruleForm)
             .then((res) => {
               this.$message({
-                message: '添加成功',
+                message: '保存成功',
                 type: 'success',
                 onClose: function () {
                   _this.$router.push('/permission/role/role_list')
