@@ -9,7 +9,8 @@
             </el-form-item>
             <el-form-item label="权限">
               <!-- 点击节点选中 带扩展 -->
-              <el-tree ref="tree" :props="defaultProps" :data="routeResourceNodes" node-key="id" show-checkbox />
+              <el-tree ref="tree" :props="defaultProps" :data="routeResourceNodes" node-key="id" show-checkbox
+                       default-expand-all />
             </el-form-item>
             <el-form-item>
               <el-button type="primary" @click="submitForm('ruleForm')">确定</el-button>
