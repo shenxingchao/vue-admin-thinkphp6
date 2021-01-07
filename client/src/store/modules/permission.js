@@ -198,6 +198,35 @@ const actions = {
                     }
                   }
                 ]
+              },
+              {
+                path: 'admin',
+                name: 'Admin',
+                component: 'Admin',
+                redirect: '/permission/admin/admin_list',
+                alwaysShow: false,
+                hidden: false,
+                meta: {
+                  title: '管理员管理',
+                  icon: '',
+                  affix: false,
+                  breadcrumb: false
+                },
+                children: [
+                  {
+                    path: 'admin_list',
+                    name: 'AdminList',
+                    component: 'AdminList',
+                    alwaysShow: false,
+                    hidden: false,
+                    meta: {
+                      title: '管理员列表',
+                      icon: 'table',
+                      affix: false,
+                      breadcrumb: true
+                    }
+                  }
+                ]
               }
             ]
           }
