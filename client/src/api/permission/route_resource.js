@@ -49,7 +49,7 @@ export function routeResourceDetail(params) {
 export function routeResourceDelete(ruleForm) {
   return request({
     url: '/RouteResource/routeResourceDelete',
-    method: 'get',
+    method: 'post',
     data: ruleForm
   })
 }

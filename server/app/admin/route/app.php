@@ -31,4 +31,6 @@ Route::group('auth', function () {
     Route::get('Role/roleDetail', 'Role/roleDetail');
     //角色编辑
     Route::post('Role/roleEdit', 'Role/roleEdit');
+    //角色删除
+    Route::post('Role/roleDelete', 'Role/roleDelete');
 });

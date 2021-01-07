@@ -532,7 +532,7 @@ class RouteResource extends BaseController {
      * }
      * @apiError (错误代码) 10001 数据验证失败
      * @apiError (错误代码) 10002 该菜单下还有子菜单，不能删除
-     * @apiError (错误代码) 10003 角色已使用该路由资源
+     * @apiError (错误代码) 10003 有角色已使用该路由资源，不能删除
      * @apiError (错误代码) 10004 数据库删除失败
      */
     public function routeResourceDelete(): Response {
@@ -556,7 +556,17 @@ class RouteResource extends BaseController {
                 $code = 10002;
                 throw new Exception('该菜单下还有子菜单，不能删除');
             }
-            //*wait code = 10003 角色表 权限字段有用到 也不能删除
+            //有角色已使用该路由资源，不能删除
+            $role = Db::name('role')->select();
+            foreach ($role as $key => $value) {
+                $temp = explode(',', $value['route_resource_ids']);
+                if (in_array($param['id'], $temp)) {
+                    $code = 10003;
+                    throw new Exception('有角色已使用该路由资源，不能删除');
+                    break;
+                }
+            }
+
             $res = Db::name('route_resource')
                 ->where(['id' => $param['id']])
                 ->delete();

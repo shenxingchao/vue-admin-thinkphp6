@@ -35,3 +35,12 @@ export function roleEdit(ruleForm) {
     data: ruleForm
   })
 }
+
+//角色删除
+export function roleDelete(ruleForm) {
+  return request({
+    url: 'Role/roleDelete',
+    method: 'post',
+    data: ruleForm
+  })
+}

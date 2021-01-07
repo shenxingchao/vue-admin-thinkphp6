@@ -17,6 +17,7 @@ class Role extends Validate {
         'role_name'               => 'require|max:6',
         'route_resource_ids'      => 'require',
         'temp_route_resource_ids' => 'require',
+        'ids'                     => 'require',
     ];
 
     /**
@@ -31,6 +32,7 @@ class Role extends Validate {
         'role_name.max'                   => '角色名称最多6个字',
         'route_resource_ids.require'      => '权限不能为空',
         'temp_route_resource_ids.require' => '权限不能为空',
+        'ids.require'                     => '请选择要删除的数据',
     ];
 
     protected $scene = [
@@ -49,7 +51,7 @@ class Role extends Validate {
             'temp_route_resource_ids',
         ],
         'delete' => [
-            'id',
+            'ids',
         ],
     ];
 }

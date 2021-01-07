@@ -28,8 +28,7 @@
 
 <script>
 import CustomTable from '@/components/CustomTable'
-import { roleList } from '@/api/permission/role'
-import { articleList, articleDelete } from '@/api/article'
+import { roleList, roleDelete } from '@/api/permission/role'
 export default {
   name: 'RoleList',
   components: {
@@ -99,7 +98,7 @@ export default {
       this.handleRowDblClick(row.id)
     },
     handleDelete(index, row) {
-      articleDelete({ ids: [row.id] })
+      roleDelete({ ids: [row.id] })
         .then((res) => {
           this.List.splice(index, 1)
           this.$message({
@@ -118,7 +117,7 @@ export default {
         })
         return false
       }
-      articleDelete({ ids: this.selectionIdList })
+      roleDelete({ ids: this.selectionIdList })
         .then((res) => {
           //这里删除还可以使用逆向循环删除，删除以后还可以重新获取数据
           this.List = this.List.filter(

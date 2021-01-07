@@ -372,4 +372,75 @@ class Role extends BaseController {
         }
         return json(['code' => $code, 'message' => $message, 'data' => $data]);
     }
+
+    /**
+     * @api {post} /Role/roleDelete 角色删除
+     * @apiVersion 0.0.1
+     * @apiName roleDelete
+     * @apiGroup 角色
+     *
+     * @apiParam (参数) {Array} ids 角色id数组
+     * @apiParamExample {json} 请求示例
+     * {
+     *    "ids":[
+     *        2]
+     * }
+     * @apiSuccess (返回字段) {Number} code 状态码
+     * @apiSuccess (返回字段) {String} message  消息
+     * @apiSuccess (返回字段) {Array}  data  数据
+     *
+     * @apiSuccessExample 成功示例
+     * HTTP/1.1 200 Success
+     * {
+     *      "code":20000,
+     *      "message":"SUCCESS",
+     *      "data":null
+     * }
+     * @apiErrorExample 失败示例1
+     * {
+     *    'code': '10001'
+     * }
+     * @apiErrorExample 失败示例2
+     * {
+     *    'code': '10002'
+     * }
+     * @apiErrorExample 失败示例3
+     * {
+     *    'code': '10003'
+     * }
+     * @apiError (错误代码) 10001 数据验证失败
+     * @apiError (错误代码) 10002 该角色已被使用，不能删除
+     * @apiError (错误代码) 10003 数据库删除失败
+     */
+    public function roleDelete(): Response {
+        $request = $this->request;
+        $request->filter(['trim']);
+        $code    = 20000;
+        $message = 'SUCCESS';
+        try {
+            $param = $request->param();
+            try {
+                validate(ValidateRole::class)->scene('delete')->check($param);
+            } catch (ValidateException $e) {
+                // 验证失败 输出错误信息
+                $code = 10001;
+                throw new Exception($e->getError());
+            }
+
+            //*wait 10002 该角色已被使用，不能删除
+            $res = Db::name('role')
+                ->where([['id', 'in', $param['ids']]])
+                ->delete();
+            if ($res > 0) {
+                $data = null;
+            } else {
+                $code = 10003;
+                throw new Exception('删除失败');
+            }
+        } catch (Exception $e) {
+            $data    = null;
+            $message = $e->getMessage();
+        }
+        return json(['code' => $code, 'message' => $message, 'data' => $data]);
+    }
 }
