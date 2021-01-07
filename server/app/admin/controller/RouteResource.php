@@ -397,7 +397,7 @@ class RouteResource extends BaseController {
     }
 
     /**
-     * @api {post} /RouteResource/routeResourceEdit 路由资源编辑
+     * @api {put} /RouteResource/routeResourceEdit 路由资源编辑
      * @apiVersion 0.0.1
      * @apiName routeResourceEdit
      * @apiGroup 路由资源
@@ -493,7 +493,7 @@ class RouteResource extends BaseController {
     }
 
     /**
-     * @api {post} /RouteResource/routeResourceDelete 路由资源删除
+     * @api {delete} /RouteResource/routeResourceDelete 路由资源删除
      * @apiVersion 0.0.1
      * @apiName routeResourceDelete
      * @apiGroup 路由资源
