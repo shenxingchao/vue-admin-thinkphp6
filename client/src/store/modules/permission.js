@@ -225,56 +225,24 @@ const actions = {
                       affix: false,
                       breadcrumb: true
                     }
+                  },
+                  {
+                    path: 'admin_add',
+                    name: 'AdminAdd',
+                    component: 'AdminAdd',
+                    alwaysShow: false,
+                    hidden: true,
+                    meta: {
+                      title: '管理员添加',
+                      icon: '',
+                      affix: false,
+                      breadcrumb: true
+                    }
                   }
                 ]
               }
             ]
           }
-          // {
-          //   path: '/article',
-          //   name: 'Article',
-          //   component: 'Layout',
-          //   redirect: 'noRedirect',
-          //   alwaysShow: true,
-          //   hidden: false,
-          //   meta: {
-          //     title: '文章管理',
-          //     icon: 'table'
-          //   },
-          //   children: [
-          //     {
-          //       path: 'article-list',
-          //       name: 'ArticleList',
-          //       component: 'ArticleList',
-          //       alwaysShow: false,
-          //       hidden: false,
-          //       meta: {
-          //         title: '文章列表',
-          //         icon: 'table'
-          //       }
-          //     },
-          //     {
-          //       path: 'article-add',
-          //       name: 'ArticleAdd',
-          //       alwaysShow: false,
-          //       hidden: true,
-          //       component: 'ArticleAdd',
-          //       meta: {
-          //         title: '文章添加'
-          //       }
-          //     },
-          //     {
-          //       path: 'article-edit',
-          //       name: 'ArticleEdit',
-          //       alwaysShow: false,
-          //       hidden: true,
-          //       component: 'ArticleEdit',
-          //       meta: {
-          //         title: '文章编辑'
-          //       }
-          //     }
-          //   ]
-          // }
         ]
       }
       asyncRouterMap = res.data.concat({

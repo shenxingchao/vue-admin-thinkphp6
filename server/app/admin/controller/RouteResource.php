@@ -98,19 +98,19 @@ class RouteResource extends BaseController {
      * @apiParam (参数) {Bool} [breadcrumb=true] 面包屑显示菜单
      * @apiParam (参数) {Number} parent_id=0 上级路由id
      * @apiParamExample {json} 请求示例
-     *{
-     *  "title":"首页",
-     *  "path":"/",
-     *  "name":"Index",
-     *  "component":"Layout",
-     *  "redirect":"/dashboard",
-     *  "always_show":false,
-     *  "hidden":false,
-     *  "icon":"",
-     *  "affix":false,
-     *  "breadcrumb":false,
-     *  "parent_id":0
-     *}
+     * {
+     *      "title":"首页",
+     *      "path":"/",
+     *      "name":"Index",
+     *      "component":"Layout",
+     *      "redirect":"/dashboard",
+     *      "always_show":false,
+     *      "hidden":false,
+     *      "icon":"",
+     *      "affix":false,
+     *      "breadcrumb":false,
+     *      "parent_id":0
+     * }
 
      * @apiSuccess (返回字段) {Number} code 状态码
      * @apiSuccess (返回字段) {String} message  消息
@@ -125,15 +125,15 @@ class RouteResource extends BaseController {
      * }
      * @apiErrorExample 失败示例1
      * {
-     *    'code': '10001'
+     *    "code": "10001"
      * }
      * @apiErrorExample 失败示例2
      * {
-     *    'code': '10002'
+     *    "code": "10002"
      * }
      * @apiErrorExample 失败示例3
      * {
-     *    'code': '10003'
+     *    "code": "10003"
      * }
      * @apiError (错误代码) 10001 数据验证失败
      * @apiError (错误代码) 10002 菜单名称已存在
@@ -181,9 +181,8 @@ class RouteResource extends BaseController {
      * @apiParam (参数) {Number} [id] 不是当前的编辑的ID
      * @apiParamExample {json} 请求示例
      * {
-     *  'id': 1,
+     *     "id": 1
      * }
-     *
      * @apiSuccess (返回字段) {Number} code 状态码
      * @apiSuccess (返回字段) {String} message  消息
      * @apiSuccess (返回字段) {Array}  data  数据
@@ -231,7 +230,7 @@ class RouteResource extends BaseController {
         try {
             $param = $request->param();
             $where = [];
-            if (isset($param['id'])) {
+            if (isset($param['id']) && $param['id'] != '') {
                 $where[] = ['id', '<>', $param['id']];
             }
             $route_resource_options = Db::name('route_resource')->where($where)->select();
@@ -319,7 +318,7 @@ class RouteResource extends BaseController {
      * @apiParam (参数) {Number} id 路由资源id
      * @apiParamExample {json} 请求示例
      * {
-     *  'id': 1,
+     *     "id": 1
      * }
      * @apiSuccess (返回字段) {Number} code 状态码
      * @apiSuccess (返回字段) {String} message  消息
@@ -360,7 +359,7 @@ class RouteResource extends BaseController {
      *
      * @apiErrorExample 失败示例1
      * {
-     *    'code': '10001'
+     *    "code": "10001"
      * }
      * @apiError (错误代码) 10001 数据验证失败
      */
@@ -415,20 +414,20 @@ class RouteResource extends BaseController {
      * @apiParam (参数) {Bool} [breadcrumb=true] 面包屑显示菜单
      * @apiParam (参数) {Number} parent_id=0 上级路由id
      * @apiParamExample {json} 请求示例
-     *{
-     *  "id":1,
-     *  "title":"首页",
-     *  "path":"/",
-     *  "name":"Index",
-     *  "component":"Layout",
-     *  "redirect":"/dashboard",
-     *  "always_show":false,
-     *  "hidden":false,
-     *  "icon":"",
-     *  "affix":false,
-     *  "breadcrumb":false,
-     *  "parent_id":0
-     *}
+     * {
+     *   "id":1,
+     *   "title":"首页",
+     *   "path":"/",
+     *   "name":"Index",
+     *   "component":"Layout",
+     *   "redirect":"/dashboard",
+     *   "always_show":false,
+     *   "hidden":false,
+     *   "icon":"",
+     *   "affix":false,
+     *   "breadcrumb":false,
+     *   "parent_id":0
+     * }
      * @apiSuccess (返回字段) {Number} code 状态码
      * @apiSuccess (返回字段) {String} message  消息
      * @apiSuccess (返回字段) {Array}  data  数据
@@ -442,15 +441,15 @@ class RouteResource extends BaseController {
      * }
      * @apiErrorExample 失败示例1
      * {
-     *    'code': '10001'
+     *    "code": "10001"
      * }
      * @apiErrorExample 失败示例2
      * {
-     *    'code': '10002'
+     *    "code": "10002"
      * }
      * @apiErrorExample 失败示例3
      * {
-     *    'code': '10003'
+     *    "code": "10003"
      * }
      * @apiError (错误代码) 10001 数据验证失败
      * @apiError (错误代码) 10002 菜单名称已存在
@@ -501,7 +500,7 @@ class RouteResource extends BaseController {
      * @apiParam (参数) {Number} id 用户id
      * @apiParamExample {json} 请求示例
      * {
-     *  'id': 1,
+     *      "id": 1,
      * }
      * @apiSuccess (返回字段) {Number} code 状态码
      * @apiSuccess (返回字段) {String} message  消息
@@ -516,19 +515,19 @@ class RouteResource extends BaseController {
      * }
      * @apiErrorExample 失败示例1
      * {
-     *    'code': '10001'
+     *    "code": "10001"
      * }
      * @apiErrorExample 失败示例2
      * {
-     *    'code': '10002'
+     *    "code": "10002"
      * }
      * @apiErrorExample 失败示例3
      * {
-     *    'code': '10003'
+     *    "code": "10003"
      * }
      * @apiErrorExample 失败示例3
      * {
-     *    'code': '10004'
+     *    "code": "10004"
      * }
      * @apiError (错误代码) 10001 数据验证失败
      * @apiError (错误代码) 10002 该菜单下还有子菜单，不能删除

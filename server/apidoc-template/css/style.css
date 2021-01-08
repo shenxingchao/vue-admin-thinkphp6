@@ -657,25 +657,25 @@ pre[class*="language-"]{
   color: rgb(15, 128, 240);
   font-size: 14px;
   font-weight: bold;
-  min-width: 32px;
+  min-width: 48px;
 }
 .typ-post{
   color: rgb(7, 187, 106);
   font-size: 14px;
   font-weight: bold;
-  min-width: 32px;
+  min-width: 48px;
 }
 .typ-put{
   color: rgb(223,202,12);
   font-size: 14px;
   font-weight: bold;
-  min-width: 32px;
+  min-width: 48px;
 }
 .typ-delete{
   color: rgb(223,12,47);
   font-size: 14px;
   font-weight: bold;
-  min-width: 32px;
+  min-width: 48px;
 }
 .pre-code-get,.pre-code-post{
   padding: 0;

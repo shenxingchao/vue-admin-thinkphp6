@@ -33,5 +33,9 @@ class CommonValidate extends Validate {
             'page',
             'pageSize',
         ],
+        'admin_list' => [
+            'page',
+            'pageSize',
+        ],
     ];
 }

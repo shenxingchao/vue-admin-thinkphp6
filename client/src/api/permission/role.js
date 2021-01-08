@@ -44,3 +44,12 @@ export function roleDelete(ruleForm) {
     data: ruleForm
   })
 }
+
+//全部角色列表
+export function roleAllList(params) {
+  return request({
+    url: 'Role/roleAllList',
+    method: 'get',
+    params: params
+  })
+}

@@ -10,10 +10,27 @@ Target Server Type    : MYSQL
 Target Server Version : 50643
 File Encoding         : 65001
 
-Date: 2021-01-07 17:34:21
+Date: 2021-01-08 17:33:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for vat_admin
+-- ----------------------------
+DROP TABLE IF EXISTS `vat_admin`;
+CREATE TABLE `vat_admin` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `username` varchar(255) NOT NULL DEFAULT '' COMMENT '账号名',
+  `password` varchar(255) NOT NULL DEFAULT '' COMMENT '密码',
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态 1启用 0禁用',
+  `role_ids` text NOT NULL COMMENT '角色id数组，逗号隔开',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='管理员表';
+
+-- ----------------------------
+-- Records of vat_admin
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for vat_role
@@ -25,12 +42,13 @@ CREATE TABLE `vat_role` (
   `route_resource_ids` text NOT NULL COMMENT '半选中和全选中id',
   `temp_route_resource_ids` text NOT NULL COMMENT '全选中节点id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='角色表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='角色表';
 
 -- ----------------------------
 -- Records of vat_role
 -- ----------------------------
-INSERT INTO `vat_role` VALUES ('1', '超级管理员', '1,2,3,4,5,6,7,8,9,10,11', '1,2,3,4,5,6,7,8,9,10,11');
+INSERT INTO `vat_role` VALUES ('1', '超级管理员', '1,2,4,5,6,7,3', '1,2,4,5,6,7');
+INSERT INTO `vat_role` VALUES ('2', '访客', '9,11,3,8', '9,11');
 
 -- ----------------------------
 -- Table structure for vat_route_resource

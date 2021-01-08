@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <el-card shadow="hover">
-      <custom-table id="role-list" :data="List" :table-head="tableHead" :params="params" :show-selection="true"
+      <custom-table id="admin-list" :data="List" :table-head="tableHead" :params="params" :show-selection="true"
                     :opt-width="180" @handleSizeChange="handleSizeChange" @handleCurrentChange="handleCurrentChange"
                     @handleSelectionChange="handleSelectionChange" @handleRowDblClick="handleRowDblClick"
                     @handleEdit="handleEdit" @handleDelete="handleDelete">
@@ -10,12 +10,19 @@
             <el-form-item prop="keyword">
               <el-input v-model="params.keyword" placeholder="搜索关键词" />
             </el-form-item>
+            <el-form-item prop="status">
+              <el-select v-model="params.status" placeholder="状态">
+                <el-option label="启用" :value="1"> </el-option>
+                <el-option label="禁用" :value="0">
+                </el-option>
+              </el-select>
+            </el-form-item>
             <el-form-item>
               <el-button type="primary" icon="el-icon-search" @click.native="onSubmit">查询</el-button>
               <el-button icon="el-icon-refresh-left" @click.native="$refs['searchForm'].resetFields();onSubmit()">重置
               </el-button>
               <el-button type="primary" icon="el-icon-plus" size="mini"
-                         @click.native="$router.push('/permission/role/role_add')">添加
+                         @click.native="$router.push('/permission/admin/admin_add')">添加
               </el-button>
               <el-button type="danger" icon="el-icon-delete" size="mini" @click.native="handleDeleteRows">删除</el-button>
             </el-form-item>
@@ -28,9 +35,9 @@
 
 <script>
 import CustomTable from '@/components/CustomTable'
-import { roleList, roleDelete } from '@/api/permission/role'
+import { adminList, adminDelete } from '@/api/permission/admin'
 export default {
-  name: 'RoleList',
+  name: 'AdminList',
   components: {
     CustomTable,
   },
@@ -45,13 +52,18 @@ export default {
           width: 60,
         },
         {
-          label: '角色名称',
-          prop: 'role_name',
+          label: '标题',
+          prop: 'title',
+          width: 300,
         },
         {
-          label: '权限',
-          prop: 'permissions',
-          width: 500,
+          label: '状态',
+          prop: 'status',
+          component: (row) => {
+            return row.status
+              ? { is: 'custom-tag', type: 'success', title: '启用' }
+              : { is: 'custom-tag', type: 'danger', title: '禁用' }
+          },
         },
       ],
       params: {
@@ -60,15 +72,16 @@ export default {
         pageSize: 10,
         pageSizes: [10, 20, 30, 50],
         keyword: '',
+        status: '',
       },
     }
   },
   async mounted() {
-    await this.getRoleList()
+    await this.getAdminList()
   },
   methods: {
-    getRoleList() {
-      return roleList(this.params)
+    getAdminList() {
+      return adminList(this.params)
         .then((res) => {
           this.List = res.data.data
           this.params.total = res.data.total
@@ -77,18 +90,18 @@ export default {
     },
     handleSizeChange(val) {
       this.params.pageSize = val
-      this.getRoleList()
+      this.getAdminList()
     },
     handleCurrentChange(val) {
       this.params.page = val
-      this.getRoleList()
+      this.getAdminList()
     },
     handleSelectionChange(val) {
       this.selectionIdList = val
     },
     handleRowDblClick(val) {
       this.$router.push({
-        path: '/permission/role/role_edit',
+        path: '/permission/admin/admin_edit',
         query: {
           id: val,
         },
@@ -98,7 +111,7 @@ export default {
       this.handleRowDblClick(row.id)
     },
     handleDelete(index, row) {
-      roleDelete({ ids: [row.id] })
+      adminDelete({ ids: [row.id] })
         .then((res) => {
           this.List.splice(index, 1)
           this.$message({
@@ -117,7 +130,7 @@ export default {
         })
         return false
       }
-      roleDelete({ ids: this.selectionIdList })
+      adminDelete({ ids: this.selectionIdList })
         .then((res) => {
           //这里删除还可以使用逆向循环删除，删除以后还可以重新获取数据
           this.List = this.List.filter(
@@ -127,7 +140,7 @@ export default {
             message: '删除成功',
             type: 'success',
             onClose: function () {
-              self.getRoleList()
+              self.getAdminList()
             },
           })
         })
@@ -136,7 +149,7 @@ export default {
     onSubmit() {
       this.params.page = 1
       this.params.pageSize = 10
-      this.getRoleList()
+      this.getAdminList()
     },
   },
 }

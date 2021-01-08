@@ -8,14 +8,6 @@ export const map = {
   Layout: Layout,
   //控制面板 level2
   Dashboard: () => import('@/views/dashboard/index'),
-  //文章管理
-  Article: () => Layout,
-  //文章列表
-  ArticleList: () => import('@/views/article/article-list'),
-  //文章添加
-  ArticleAdd: () => import('@/views/article/article-add'),
-  //文章编辑
-  ArticleEdit: () => import('@/views/article/article-edit'),
   //权限管理 level1
   Permission: () => Layout,
   //路由资源管理 level2
@@ -38,7 +30,11 @@ export const map = {
   RoleAdd: () => import('@/views/permission/role/role_add'),
   //角色编辑 level3
   RoleEdit: () => import('@/views/permission/role/role_edit'),
-  //管理员管理 level1
-  Admin: () => import('@/views/permission/admin/admin')
+  //管理员管理 level2
+  Admin: () => import('@/views/permission/admin/admin'),
+  //管理员列表 level3
+  AdminList: () => import('@/views/permission/admin/admin_list'),
+  //管理员添加 level3
+  AdminAdd: () => import('@/views/permission/admin/admin_add')
 }
 export default map

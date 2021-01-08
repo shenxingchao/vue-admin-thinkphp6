@@ -1,9 +1,10 @@
 <template>
   <div class="app-container">
     <el-card shadow="hover">
-      <custom-table id="article-list" :data="List" :table-head="tableHead" :params="params" :show-selection="true"
-                    :show-page="false" :is-radio="true" :opt-width="180" @handleSelectionChange="handleSelectionChange"
-                    @handleRowDblClick="handleRowDblClick" @handleEdit="handleEdit" @handleDelete="handleDelete">
+      <custom-table id="route-resource-list" :data="List" :table-head="tableHead" :params="params"
+                    :show-selection="true" :show-page="false" :is-radio="true" :opt-width="180"
+                    @handleSelectionChange="handleSelectionChange" @handleRowDblClick="handleRowDblClick"
+                    @handleEdit="handleEdit" @handleDelete="handleDelete">
         <template v-slot:searchBar>
           <el-form ref="searchForm" :inline="true" :model="params" class="demo-form-inline" size="mini">
             <el-form-item>

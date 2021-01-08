@@ -23,6 +23,7 @@ Route::group('auth', function () {
     Route::delete('RouteResource/routeResourceDelete', 'RouteResource/routeResourceDelete');
     //路由资源节点树
     Route::get('RouteResource/routeResourceNodes', 'RouteResource/routeResourceNodes');
+
     //角色添加
     Route::post('Role/roleAdd', 'Role/roleAdd');
     //角色列表
@@ -33,4 +34,11 @@ Route::group('auth', function () {
     Route::put('Role/roleEdit', 'Role/roleEdit');
     //角色删除
     Route::delete('Role/roleDelete', 'Role/roleDelete');
+    //所有角色选项
+    Route::get('Role/roleAllList', 'Role/roleAllList');
+
+    //管理员添加
+    Route::post('Admin/adminAdd', 'Admin/adminAdd');
+    //管理员列表
+    Route::get('Admin/adminList', 'Admin/adminList');
 });
