@@ -5,6 +5,8 @@ Route::get('hello', 'Test/hello');
 
 //不需要鉴权的常规路由
 Route::group('normal', function () {
+    //用户登录
+    Route::post('User/login', 'User/login');
 });
 
 //需要鉴权的路由分组
