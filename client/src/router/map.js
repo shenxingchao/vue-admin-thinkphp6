@@ -35,6 +35,8 @@ export const map = {
   //管理员列表 level3
   AdminList: () => import('@/views/permission/admin/admin_list'),
   //管理员添加 level3
-  AdminAdd: () => import('@/views/permission/admin/admin_add')
+  AdminAdd: () => import('@/views/permission/admin/admin_add'),
+  //管理员编辑 level3
+  AdminEdit: () => import('@/views/permission/admin/admin_edit')
 }
 export default map

@@ -11,7 +11,7 @@
               <el-input v-model="params.keyword" placeholder="搜索关键词" />
             </el-form-item>
             <el-form-item prop="status">
-              <el-select v-model="params.status" placeholder="状态">
+              <el-select v-model="params.status" placeholder="状态" clearable>
                 <el-option label="启用" :value="1"> </el-option>
                 <el-option label="禁用" :value="0">
                 </el-option>
@@ -52,9 +52,9 @@ export default {
           width: 60,
         },
         {
-          label: '标题',
-          prop: 'title',
-          width: 300,
+          label: '账号名',
+          prop: 'username',
+          width: 150,
         },
         {
           label: '状态',
@@ -64,6 +64,10 @@ export default {
               ? { is: 'custom-tag', type: 'success', title: '启用' }
               : { is: 'custom-tag', type: 'danger', title: '禁用' }
           },
+        },
+        {
+          label: '角色',
+          prop: 'roles',
         },
       ],
       params: {

@@ -238,6 +238,19 @@ const actions = {
                       affix: false,
                       breadcrumb: true
                     }
+                  },
+                  {
+                    path: 'admin_edit',
+                    name: 'AdminEdit',
+                    component: 'AdminEdit',
+                    alwaysShow: false,
+                    hidden: true,
+                    meta: {
+                      title: '管理员编辑',
+                      icon: '',
+                      affix: false,
+                      breadcrumb: true
+                    }
                   }
                 ]
               }

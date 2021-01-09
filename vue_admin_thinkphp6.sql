@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地连接
+Source Server         : localhost_3306
 Source Server Version : 50643
 Source Host           : localhost:3306
 Source Database       : vue_admin_thinkphp6
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50643
 File Encoding         : 65001
 
-Date: 2021-01-08 17:33:12
+Date: 2021-01-09 23:39:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,11 +26,13 @@ CREATE TABLE `vat_admin` (
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态 1启用 0禁用',
   `role_ids` text NOT NULL COMMENT '角色id数组，逗号隔开',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='管理员表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='管理员表';
 
 -- ----------------------------
 -- Records of vat_admin
 -- ----------------------------
+INSERT INTO `vat_admin` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '1', '1');
+INSERT INTO `vat_admin` VALUES ('2', 'test', '098f6bcd4621d373cade4e832627b4f6', '1', '2');
 
 -- ----------------------------
 -- Table structure for vat_role

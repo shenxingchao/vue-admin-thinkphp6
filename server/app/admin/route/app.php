@@ -41,4 +41,10 @@ Route::group('auth', function () {
     Route::post('Admin/adminAdd', 'Admin/adminAdd');
     //管理员列表
     Route::get('Admin/adminList', 'Admin/adminList');
+    //管理员详情
+    Route::get('Admin/adminDetail', 'Admin/adminDetail');
+    //管理员编辑
+    Route::put('Admin/adminEdit', 'Admin/adminEdit');
+    //管理员删除
+    Route::delete('Admin/adminDelete', 'Admin/adminDelete');
 });

@@ -31,6 +31,7 @@ class Admin extends Validate {
         'username.require' => '请输入账号名',
         'username.min'     => '账号名最少2个字',
         'username.max'     => '账号名最多20个字',
+        'password.require' => '请输入密码',
         'role_ids.require' => '请选择角色',
         'ids.require'      => '请选择要删除的数据',
     ];
@@ -38,6 +39,7 @@ class Admin extends Validate {
     protected $scene = [
         'add'    => [
             'username',
+            'password',
             'role_ids',
         ],
         'detail' => [
