@@ -21,7 +21,7 @@ export function getInfo(params) {
 export function logout(ruleForm) {
   return request({
     url: '/User/logout',
-    method: 'post',
+    method: 'put',
     data: ruleForm
   })
 }
@@ -29,7 +29,7 @@ export function logout(ruleForm) {
 export function getPermissionRouter(params) {
   return request({
     url: '/User/getPermissionRouter',
-    method: 'post',
+    method: 'get',
     params: params
   })
 }

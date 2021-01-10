@@ -85,6 +85,7 @@ class RouteResource extends BaseController {
      * @apiVersion 0.0.1
      * @apiName routeResourceAdd
      * @apiGroup 路由资源
+     * @apiHeader {String} X-token api-token
      *
      * @apiParam (参数) {String} title='empty string' 菜单名称
      * @apiParam (参数) {String} path='empty string' 路由地址
@@ -177,6 +178,7 @@ class RouteResource extends BaseController {
      * @apiVersion 0.0.1
      * @apiName routeResourceOptions
      * @apiGroup 路由资源
+     * @apiHeader {String} X-token api-token
      *
      * @apiParam (参数) {Number} [id] 不是当前的编辑的ID
      * @apiParamExample {json} 请求示例
@@ -248,6 +250,7 @@ class RouteResource extends BaseController {
      * @apiVersion 0.0.1
      * @apiName routeResourceList
      * @apiGroup 路由资源
+     * @apiHeader {String} X-token api-token
      *
      * @apiSuccess (返回字段) {Number} code 状态码
      * @apiSuccess (返回字段) {String} message  消息
@@ -314,6 +317,7 @@ class RouteResource extends BaseController {
      * @apiVersion 0.0.1
      * @apiName routeResourceDetail
      * @apiGroup 路由资源
+     * @apiHeader {String} X-token api-token
      *
      * @apiParam (参数) {Number} id 路由资源id
      * @apiParamExample {json} 请求示例
@@ -400,6 +404,7 @@ class RouteResource extends BaseController {
      * @apiVersion 0.0.1
      * @apiName routeResourceEdit
      * @apiGroup 路由资源
+     * @apiHeader {String} X-token api-token
      *
      * @apiParam (参数) {Number} id 路由资源id
      * @apiParam (参数) {String} title='empty string' 菜单名称
@@ -496,6 +501,7 @@ class RouteResource extends BaseController {
      * @apiVersion 0.0.1
      * @apiName routeResourceDelete
      * @apiGroup 路由资源
+     * @apiHeader {String} X-token api-token
      *
      * @apiParam (参数) {Number} id 用户id
      * @apiParamExample {json} 请求示例
@@ -587,6 +593,7 @@ class RouteResource extends BaseController {
      * @apiVersion 0.0.1
      * @apiName routeResourceNodes
      * @apiGroup 路由资源
+     * @apiHeader {String} X-token api-token
      *
      * @apiSuccess (返回字段) {Number} code 状态码
      * @apiSuccess (返回字段) {String} message  消息

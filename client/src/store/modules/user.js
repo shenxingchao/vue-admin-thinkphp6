@@ -52,22 +52,6 @@ const actions = {
   // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      /*    commit('SET_ROLES', [1, 2, 3])
-      commit('SET_NAME', '待修改')
-      commit(
-        'SET_AVATAR',
-        'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif'
-      )
-      resolve({
-        message: 'success',
-        code: 20000,
-        data: {
-          username: '待修改',
-          avatar:
-            'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-          roles: [1, 2, 3] //模拟返回角色id 1，2，3
-        }
-      }) */
       getInfo({})
         .then(response => {
           const { data } = response
@@ -92,7 +76,7 @@ const actions = {
   // user logout
   logout({ commit, state }) {
     return new Promise((resolve, reject) => {
-      logout(state.token)
+      logout({})
         .then(() => {
           removeToken() // must remove  token  first
           resetRouter()

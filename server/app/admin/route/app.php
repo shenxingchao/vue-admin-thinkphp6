@@ -15,6 +15,10 @@ Route::group(function () {
 Route::group(function () {
     //获取用户信息
     Route::get('User/getInfo', 'User/getInfo');
+    //用户退出登录
+    Route::put('User/logout', 'User/logout');
+    //获取用户路由权限
+    Route::get('User/getPermissionRouter', 'User/getPermissionRouter');
 
     //路由资源添加
     Route::post('RouteResource/routeResourceAdd', 'RouteResource/routeResourceAdd');

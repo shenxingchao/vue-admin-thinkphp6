@@ -16,6 +16,7 @@ class Role extends BaseController {
      * @apiVersion 0.0.1
      * @apiName roleAdd
      * @apiGroup 角色
+     * @apiHeader {String} X-token api-token
      *
      * @apiParam (参数) {String} role_name='empty string' 角色名称
      * @apiParam (参数) {Array} route_resource_ids 全选中和半选中权限ids
@@ -106,6 +107,7 @@ class Role extends BaseController {
      * @apiVersion 0.0.1
      * @apiName roleList
      * @apiGroup 角色
+     * @apiHeader {String} X-token api-token
      *
      * @apiParam (参数) {Number} page 当前页
      * @apiParam (参数) {Number} pageSize 分页变量
@@ -200,6 +202,7 @@ class Role extends BaseController {
      * @apiVersion 0.0.1
      * @apiName roleDetail
      * @apiGroup 角色
+     * @apiHeader {String} X-token api-token
      *
      * @apiParam (参数) {Number} id 角色id
      * @apiParamExample {json} 请求示例
@@ -282,6 +285,7 @@ class Role extends BaseController {
      * @apiVersion 0.0.1
      * @apiName roleEdit
      * @apiGroup 角色
+     * @apiHeader {String} X-token api-token
      *
      * @apiParam (参数) {String} id 角色id
      * @apiParam (参数) {String} role_name='empty string' 角色名称
@@ -379,6 +383,7 @@ class Role extends BaseController {
      * @apiVersion 0.0.1
      * @apiName roleDelete
      * @apiGroup 角色
+     * @apiHeader {String} X-token api-token
      *
      * @apiParam (参数) {Array} ids 角色id数组
      * @apiParamExample {json} 请求示例
@@ -462,6 +467,7 @@ class Role extends BaseController {
      * @apiVersion 0.0.1
      * @apiName roleAllList
      * @apiGroup 角色
+     * @apiHeader {String} X-token api-token
      *
      * @apiSuccess (返回字段) {Number} code 状态码
      * @apiSuccess (返回字段) {String} message  消息

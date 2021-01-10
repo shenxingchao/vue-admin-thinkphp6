@@ -15,6 +15,7 @@ class User extends Validate {
     protected $rule = [
         'username' => 'require',
         'password' => 'require',
+        'roles'    => 'require',
     ];
 
     /**
@@ -26,12 +27,16 @@ class User extends Validate {
     protected $message = [
         'username.require' => '请输入账号名',
         'password.require' => '请输入密码',
+        'roles.require'    => '角色id数组不能为空',
     ];
 
     protected $scene = [
-        'login' => [
+        'login'             => [
             'username',
             'password',
+        ],
+        'permission_router' => [
+            'roles',
         ],
     ];
 }

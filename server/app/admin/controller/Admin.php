@@ -16,6 +16,7 @@ class Admin extends BaseController {
      * @apiVersion 0.0.1
      * @apiName adminAdd
      * @apiGroup 管理员
+     * @apiHeader {String} X-token api-token
      *
      * @apiParam (参数) {String} username='empty string' 账号名
      * @apiParam (参数) {String} password='empty string' 密码
@@ -98,6 +99,7 @@ class Admin extends BaseController {
      * @apiVersion 0.0.1
      * @apiName adminList
      * @apiGroup 管理员
+     * @apiHeader {String} X-token api-token
      *
      * @apiParam (参数) {Number} page 当前页
      * @apiParam (参数) {Number} pageSize 分页变量
@@ -194,6 +196,7 @@ class Admin extends BaseController {
      * @apiVersion 0.0.1
      * @apiName adminDetail
      * @apiGroup 管理员
+     * @apiHeader {String} X-token api-token
      *
      * @apiParam (参数) {Number} id 管理员id
      * @apiParamExample {json} 请求示例
@@ -264,6 +267,7 @@ class Admin extends BaseController {
      * @apiVersion 0.0.1
      * @apiName adminEdit
      * @apiGroup 管理员
+     * @apiHeader {String} X-token api-token
      *
      * @apiParam (参数) {String} id 管理员id
      * @apiParam (参数) {String} username='empty string' 账号名
@@ -354,6 +358,7 @@ class Admin extends BaseController {
      * @apiVersion 0.0.1
      * @apiName adminDelete
      * @apiGroup 管理员
+     * @apiHeader {String} X-token api-token
      *
      * @apiParam (参数) {Array} ids 管理员id数组
      * @apiParamExample {json} 请求示例
