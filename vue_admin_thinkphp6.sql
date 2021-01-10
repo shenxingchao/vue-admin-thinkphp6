@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50643
 File Encoding         : 65001
 
-Date: 2021-01-10 17:15:34
+Date: 2021-01-11 00:09:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,7 +33,7 @@ CREATE TABLE `vat_admin` (
 -- ----------------------------
 -- Records of vat_admin
 -- ----------------------------
-INSERT INTO `vat_admin` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '1', '1,2', '9c5c54250090871e953d7c8029ce917c', '1610356264');
+INSERT INTO `vat_admin` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '1', '1,2', '9ac2d9013b152abcfd28d6758d6cfadb', '1610380510');
 INSERT INTO `vat_admin` VALUES ('2', 'test', '098f6bcd4621d373cade4e832627b4f6', '1', '2', '', '0');
 
 -- ----------------------------
@@ -51,8 +51,8 @@ CREATE TABLE `vat_role` (
 -- ----------------------------
 -- Records of vat_role
 -- ----------------------------
-INSERT INTO `vat_role` VALUES ('1', '超级管理员', '1,2,4,5,6,7,3', '1,2,4,5,6,7');
-INSERT INTO `vat_role` VALUES ('2', '访客', '9,11,3,8', '9,11');
+INSERT INTO `vat_role` VALUES ('1', '超级管理员', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15');
+INSERT INTO `vat_role` VALUES ('2', '访客', '1,2', '1,2');
 
 -- ----------------------------
 -- Table structure for vat_route_resource
