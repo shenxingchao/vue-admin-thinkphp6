@@ -42,7 +42,6 @@ router.beforeEach(async (to, from, next) => {
             'permission/generateRoutes',
             roles
           ) //根据角色id数组 创建动态路由
-          console.log(asyncRouterMapRes)
           router.options.routes = store.getters.addRoutes // bug 新增的路由添加到路由配置 不然菜单会不显示 看菜单组件用的是这个 router.options.routes
           router.addRoutes(asyncRouterMapRes) //异步动态映射路由添加到当前路由
 

@@ -213,44 +213,94 @@ class User extends BaseController {
     }
 
     /**
-     * @api {get} /Admin/adminDetail 管理员详情
+     * @api {get} /User/getPermissionRouter 获取用户路由权限
      * @apiVersion 0.0.1
-     * @apiName adminDetail
-     * @apiGroup 管理员
+     * @apiName getPermissionRouter
+     * @apiGroup 用户
      * @apiHeader {String} X-token api-token
      *
-     * @apiParam (参数) {Number} id 管理员id
+     * @apiParam (参数) {Array} roles 角色id数组
      * @apiParamExample {json} 请求示例
      * {
-     *  "id": 1,
+     *  "roles": [
+     *      1,
+     *      2],
      * }
      * @apiSuccess (返回字段) {Number} code 状态码
      * @apiSuccess (返回字段) {String} message  消息
      * @apiSuccess (返回字段) {Array} data  资源对象
-     * @apiSuccess (返回字段) {Number} data.id  id
-     * @apiSuccess (返回字段) {String} data.username 账号名
-     * @apiSuccess (返回字段) {Boolean} data.status  状态
-     * @apiSuccess (返回字段) {Array} data.role_ids  角色id数组
-     * @apiSuccess (返回字段) {String} data.password 密码
+     * @apiSuccess (返回字段) {String} data.path  路由路径
+     * @apiSuccess (返回字段) {String} data.name 路由名称
+     * @apiSuccess (返回字段) {String} data.component 路由映射组件名称
+     * @apiSuccess (返回字段) {String} data.redirect 重定向地址
+     * @apiSuccess (返回字段) {Boolean} data.alwaysShow  显示根节点
+     * @apiSuccess (返回字段) {Boolean} data.hidden  菜单是否显示
+     * @apiSuccess (返回字段) {Object} data.meta  meta
+     * @apiSuccess (返回字段) {String} data.meta.title 菜单名称
+     * @apiSuccess (返回字段) {String} data.meta.icon svg图标
+     * @apiSuccess (返回字段) {Boolean} data.meta.affix 标签栏固定
+     * @apiSuccess (返回字段) {Boolean} data.meta.breadcrumb 面包屑导航显示
      *
      * @apiSuccessExample 成功示例
      * HTTP/1.1 200 Success
      * {
-     *     "code": 20000,
-     *     "message": "SUCCESS",
-     *     "data": {
-     *         "id": 4,
-     *         "username": "test22",
-     *         "status": true,
-     *         "role_ids": [1, 2],
-     *         "password": ""
-     *     }
+     *    "code":20000,
+     *    "message":"SUCCESS",
+     *    "data":[
+     *    {
+     *        "path":"\/",
+     *        "name":"Index",
+     *        "component":"Layout",
+     *        "redirect":"\/dashboard",
+     *        "alwaysShow":false,
+     *        "hidden":false,
+     *        "meta":{
+     *        "title":"",
+     *        "icon":"",
+     *        "affix":false,
+     *        "breadcrumb":false
+     *        },
+     *        "children":[
+     *        {
+     *            "path":"dashboard",
+     *            "name":"Dashboard",
+     *            "component":"Dashboard",
+     *            "alwaysShow":false,
+     *            "hidden":false,
+     *            "meta":{
+     *            "title":"控制台",
+     *            "icon":"dashboard",
+     *            "affix":true,
+     *            "breadcrumb":true
+     *            }
+     *        }]
+     *    },
      * }
      * @apiErrorExample 失败示例1
      * {
      *    "code": "10001"
      * }
-     * @apiError (错误代码) 10001 数据验证失败
+     * @apiErrorExample 失败示例2
+     * {
+     *    "code": "10002"
+     * }
+     * @apiErrorExample 失败示例3
+     * {
+     *    "code": "10003"
+     * }
+     * @apiErrorExample 失败示例4
+     * {
+     *    "code": "10004"
+     * }
+     * @apiErrorExample 失败示例5
+     * {
+     *    "code": "10005"
+     * }
+     * @apiError (错误代码) 10001 token不存在
+     * @apiError (错误代码) 10002 数据验证失败
+     * @apiError (错误代码) 10003 未找到角色1 账号是不一致
+     * @apiError (错误代码) 10004 当前请求角色不是该账号下角色
+     * @apiError (错误代码) 10005 未找到角色2
      */
     public function getPermissionRouter(): Response {
         $request = $this->request;
