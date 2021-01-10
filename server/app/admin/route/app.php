@@ -1,16 +1,21 @@
 <?php
 use think\facade\Route;
 
-Route::get('hello', 'Test/hello');
+// Route::get('hello', 'Test/hello');
 
+//有种东西叫虚拟分组
 //不需要鉴权的常规路由
-Route::group('normal', function () {
+Route::group(function () {
     //用户登录
     Route::post('User/login', 'User/login');
+
 });
 
 //需要鉴权的路由分组
-Route::group('auth', function () {
+Route::group(function () {
+    //获取用户信息
+    Route::get('User/getInfo', 'User/getInfo');
+
     //路由资源添加
     Route::post('RouteResource/routeResourceAdd', 'RouteResource/routeResourceAdd');
     //路由资源配置
@@ -49,4 +54,4 @@ Route::group('auth', function () {
     Route::put('Admin/adminEdit', 'Admin/adminEdit');
     //管理员删除
     Route::delete('Admin/adminDelete', 'Admin/adminDelete');
-});
+})->middleware(\app\admin\middleware\Auth::class);

@@ -37,7 +37,7 @@ service.interceptors.response.use(
         type: 'error',
         duration: 5 * 1000
       })
-      if (res.code === 50008) {
+      if (res.code === 50008 || res.code === 50014) {
         // to re-login
         MessageBox.confirm('账号信息已过期，请重新登录', '确认注销', {
           confirmButtonText: '重新登录',

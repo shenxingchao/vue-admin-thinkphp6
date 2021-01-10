@@ -12,7 +12,7 @@ export function login(ruleForm) {
 
 export function getInfo(params) {
   return request({
-    url: '/UserCenter/getInfo',
+    url: '/User/getInfo',
     method: 'get',
     params: params
   })
@@ -20,7 +20,7 @@ export function getInfo(params) {
 
 export function logout(ruleForm) {
   return request({
-    url: '/UserCenter/logout',
+    url: '/User/logout',
     method: 'post',
     data: ruleForm
   })
@@ -28,7 +28,7 @@ export function logout(ruleForm) {
 
 export function getPermissionRouter(params) {
   return request({
-    url: '/UserCenter/getPermissionRouter',
+    url: '/User/getPermissionRouter',
     method: 'post',
     params: params
   })

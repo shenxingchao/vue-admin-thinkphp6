@@ -52,7 +52,7 @@ const actions = {
   // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      commit('SET_ROLES', [1, 2, 3])
+      /*    commit('SET_ROLES', [1, 2, 3])
       commit('SET_NAME', '待修改')
       commit(
         'SET_AVATAR',
@@ -67,25 +67,25 @@ const actions = {
             'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
           roles: [1, 2, 3] //模拟返回角色id 1，2，3
         }
-      })
-      // getInfo(state.token)
-      //   .then(response => {
-      //     const { data } = response
+      }) */
+      getInfo({})
+        .then(response => {
+          const { data } = response
 
-      //     if (!data) {
-      //       return reject('验证失败，请重新登录.')
-      //     }
+          if (!data) {
+            return reject('验证失败，请重新登录.')
+          }
 
-      //     const { username, avatar, roles } = data
+          const { username, avatar, roles } = data
 
-      //     commit('SET_ROLES', roles)
-      //     commit('SET_NAME', username)
-      //     commit('SET_AVATAR', avatar)
-      //     resolve(data)
-      //   })
-      //   .catch(error => {
-      //     reject(error)
-      //   })
+          commit('SET_ROLES', roles)
+          commit('SET_NAME', username)
+          commit('SET_AVATAR', avatar)
+          resolve(data)
+        })
+        .catch(error => {
+          reject(error)
+        })
     })
   },
 

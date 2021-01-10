@@ -89,4 +89,8 @@ class User extends BaseController {
         }
         return json(['code' => $code, 'message' => $message, 'data' => $data]);
     }
+
+    public function getInfo() {
+        var_dump($this->request->token);exit;
+    }
 }
