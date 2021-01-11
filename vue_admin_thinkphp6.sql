@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
+Source Server         : 本地连接
 Source Server Version : 50643
 Source Host           : localhost:3306
 Source Database       : vue_admin_thinkphp6
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50643
 File Encoding         : 65001
 
-Date: 2021-01-11 00:09:12
+Date: 2021-01-11 09:02:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,7 +33,7 @@ CREATE TABLE `vat_admin` (
 -- ----------------------------
 -- Records of vat_admin
 -- ----------------------------
-INSERT INTO `vat_admin` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '1', '1,2', '9ac2d9013b152abcfd28d6758d6cfadb', '1610380510');
+INSERT INTO `vat_admin` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '1', '1,2', 'a3376574a076fbc2716d797c0bf743e9', '1610413014');
 INSERT INTO `vat_admin` VALUES ('2', 'test', '098f6bcd4621d373cade4e832627b4f6', '1', '2', '', '0');
 
 -- ----------------------------
@@ -81,14 +81,14 @@ INSERT INTO `vat_route_resource` VALUES ('1', '首页', '/', 'Index', 'Layout', 
 INSERT INTO `vat_route_resource` VALUES ('2', '控制台', 'dashboard', 'Dashboard', 'Dashboard', '', '0', '0', 'dashboard', '1', '1', '1');
 INSERT INTO `vat_route_resource` VALUES ('3', '权限管理', '/permission', 'Permission', 'Layout', 'noRedirect', '1', '0', 'permission', '0', '1', '0');
 INSERT INTO `vat_route_resource` VALUES ('4', '路由资源管理', 'route_resource', 'RouteResource', 'RouteResource', '/permission/route_resource/route_resource_list', '0', '0', '', '0', '0', '3');
-INSERT INTO `vat_route_resource` VALUES ('5', '路由资源列表', 'route_resource_list', 'RouteResourceList', 'RouteResourceList', '', '0', '0', 'table', '0', '1', '4');
+INSERT INTO `vat_route_resource` VALUES ('5', '路由资源列表', 'route_resource_list', 'RouteResourceList', 'RouteResourceList', '', '0', '0', 'route_resource', '0', '1', '4');
 INSERT INTO `vat_route_resource` VALUES ('6', '路由资源添加', 'route_resource_add', 'RouteResourceAdd', 'RouteResourceAdd', '', '0', '1', '', '0', '1', '4');
 INSERT INTO `vat_route_resource` VALUES ('7', '路由资源编辑', 'route_resource_edit', 'RouteResourceEdit', 'RouteResourceEdit', '', '0', '1', '', '0', '1', '4');
 INSERT INTO `vat_route_resource` VALUES ('8', '角色管理', 'role', 'Role', 'Role', '/permission/role/role_list', '0', '0', '', '0', '0', '3');
-INSERT INTO `vat_route_resource` VALUES ('9', '角色列表', 'role_list', 'RoleList', 'RoleList', '', '0', '0', 'table', '0', '1', '8');
+INSERT INTO `vat_route_resource` VALUES ('9', '角色列表', 'role_list', 'RoleList', 'RoleList', '', '0', '0', 'role', '0', '1', '8');
 INSERT INTO `vat_route_resource` VALUES ('10', '角色添加', 'role_add', 'RoleAdd', 'RoleAdd', '', '0', '1', '', '0', '1', '8');
 INSERT INTO `vat_route_resource` VALUES ('11', '角色编辑', 'role_edit', 'RoleEdit', 'RoleEdit', '', '0', '1', '', '0', '1', '8');
 INSERT INTO `vat_route_resource` VALUES ('12', '管理员管理', 'admin', 'Admin', 'Admin', '/permission/admin/admin_list', '0', '0', '', '0', '0', '3');
-INSERT INTO `vat_route_resource` VALUES ('13', '管理员列表', 'admin_list', 'AdminList', 'AdminList', '', '0', '0', 'table', '0', '1', '12');
+INSERT INTO `vat_route_resource` VALUES ('13', '管理员列表', 'admin_list', 'AdminList', 'AdminList', '', '0', '0', 'admin', '0', '1', '12');
 INSERT INTO `vat_route_resource` VALUES ('14', '管理员添加', 'admin_add', 'AdminAdd', 'AdminAdd', '', '0', '1', '', '0', '1', '12');
 INSERT INTO `vat_route_resource` VALUES ('15', '管理员编辑', 'admin_edit', 'AdminEdit', 'AdminEdit', '', '0', '1', '', '0', '1', '12');
