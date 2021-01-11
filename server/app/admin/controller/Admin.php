@@ -354,7 +354,7 @@ class Admin extends BaseController {
     }
 
     /**
-     * @api {delete} /Admin/adminDelete 管理员删除
+     * @api {del} /Admin/adminDelete 管理员删除
      * @apiVersion 0.0.1
      * @apiName adminDelete
      * @apiGroup 管理员

@@ -497,7 +497,7 @@ class RouteResource extends BaseController {
     }
 
     /**
-     * @api {delete} /RouteResource/routeResourceDelete 路由资源删除
+     * @api {del} /RouteResource/routeResourceDelete 路由资源删除
      * @apiVersion 0.0.1
      * @apiName routeResourceDelete
      * @apiGroup 路由资源

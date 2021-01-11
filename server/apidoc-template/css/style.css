@@ -2,7 +2,7 @@
  * Content
  * ------------------------------------------------------------------------------------------ */
 body, p, a, div, th, td {
-  font-family: "Roboto", monospace, sans-serif;
+  font-family: "Microsoft-Yahei","Roboto", monospace, sans-serif;
   font-weight: 400;
   font-size: 16px;
 }
@@ -18,7 +18,7 @@ body, p, a, div, th, td {
 
 td.code {
   font-size: 16px;
-  font-family: "Roboto", monospace, sans-serif;
+  font-family: "Microsoft-Yahei","Roboto", monospace, sans-serif;
   font-style: normal;
   font-weight: bold;
 }
@@ -97,7 +97,7 @@ h2 {
 
 section {
   border-top: 1px solid #ebebeb;
-  padding: 30px 0;
+  padding: 15px 0;
 }
 
 section h1 {
@@ -213,10 +213,12 @@ td {
  * ------------------------------------------------------------------------------------------ */
 .type {
   font-family: Helvetica Neue,Helvetica,microsoft yahei,arial,STHeiTi,sans-serif;
-  font-size: 14px;
+  font-size: 12px;
+  height: 20px;
+  line-height: 17px;
   display: inline-block;
   margin: 0 0 5px 0;
-  padding: 4px 10px;
+  padding: 2px 10px;
   border-radius: 4px;
   text-transform: uppercase;
   background-color: #3387CC;
@@ -224,26 +226,26 @@ td {
 }
 
 .type__get {
-  color: #0990ff;
-  background-color: rgba(7, 134, 253, 0.1);
+  color: #ffffff;
+  background-color: rgba(7, 134, 253);
   border: 1px solid rgba(7, 134, 253, 0.2)
 }
 
 .type__put {
-  color: #e5c500;
-  background-color: rgba(223, 202, 12, 0.1);
+  color: #ffffff;
+  background-color: rgba(223, 202, 12);
   border: 1px solid rgba(223, 202, 12, 0.2)
 }
 
 .type__post {
-  color: #21cc7d;
-  background-color: rgba(33,204,125,.1);
+  color: #ffffff;
+  background-color: rgba(33,204,125);
   border: 1px solid rgba(33,204,125,.2)
 }
 
 .type__delete {
-  color: #ed0039;
-  background-color: rgba(223, 12, 47, 0.1);
+  color: #ffffff;
+  background-color: rgba(223, 12, 47);
   border: 1px solid rgba(223, 12, 47, 0.2)
 }
 
@@ -259,7 +261,8 @@ td {
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: #282A36;
+  background-color: #ffffff;
+  box-shadow: 2px 0 4px 0px #eeeeee;
   z-index: 10;
 }
 
@@ -269,7 +272,7 @@ td {
   margin: 0;
   padding: 4px 40px;
   border: 0;
-  font-family: "Roboto", monospace, sans-serif;
+  font-family: "Microsoft-Yahei","Roboto", monospace, sans-serif;
   font-weight: 400;
   font-size: 12px;
   white-space: nowrap;
@@ -282,7 +285,7 @@ td {
 }
 .sidenav > li > a > .nav-list-url-item{
   font-size: 12px;
-  color: #ffffff;
+  color: #555555;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -298,9 +301,10 @@ td {
 .sidenav > li.nav-header > a {
   padding: 4px 20px;
   width: 100%;
-  font-family: "Roboto", monospace, sans-serif;
+  font-family: "Microsoft-Yahei","Roboto", monospace, sans-serif;
   font-size: 14px;
-  color: #ffffff;
+  color: #333333;
+  font-weight: bold;
 }
 
 .sidenav > li.active > a {
@@ -322,7 +326,8 @@ td {
   top: 56px;
   position: fixed;
   padding: 10px 20px 10px 20px;
-  background-color: #282A36;
+  background-color: #ffffff;
+  box-shadow: 2px 0 4px 0px #eeeeee;
   z-index: 11;
 }
 
@@ -616,7 +621,7 @@ p.deprecated span{
   margin-bottom: 20px;
 }
 
-.pre-delete {
+.pre-del {
   background: rgba(223,12,47,0.2);
   border-width: 1px;
   border-style: dotted;
@@ -635,6 +640,7 @@ p.deprecated span{
 }
 .nav-tabs>li>a{
   color: #cccccc;
+  font-size: 14px;
 }
 .nav-tabs>li>a:hover,.nav-tabs>li>a:focus{
   color: #ffffff;
@@ -646,6 +652,7 @@ p.deprecated span{
   color: #ffffff;
   background-color: #282A36 !important;
   border: 1px solid #282A36 !important;
+  font-size: 14px;
 }
 pre[class*="language-"]{
   margin: 0;
@@ -653,40 +660,40 @@ pre[class*="language-"]{
   border-radius: 0;
 }
 .pre-get h2{
-  color: rgb(15, 128, 240);
+  color: #111111;
 }
 .pre-post h2{
-  color: rgb(7, 187, 106);
+  color: #111111;
 }
 .pre-put h2{
-  color: rgb(223,202,12);
+  color: #111111;
 }
-.pre-delete h2{
-  color: rgb(223,12,47);
+.pre-del h2{
+  color: #111111;
 }
 .typ-get{
   color: rgb(15, 128, 240);
   font-size: 14px;
   font-weight: bold;
-  min-width: 48px;
+  min-width: 32px;
 }
 .typ-post{
   color: rgb(7, 187, 106);
   font-size: 14px;
   font-weight: bold;
-  min-width: 48px;
+  min-width: 32px;
 }
 .typ-put{
   color: rgb(223,202,12);
   font-size: 14px;
   font-weight: bold;
-  min-width: 48px;
+  min-width: 32px;
 }
-.typ-delete{
+.typ-del{
   color: rgb(223,12,47);
   font-size: 14px;
   font-weight: bold;
-  min-width: 48px;
+  min-width: 32px;
 }
 .pre-code-get,.pre-code-post{
   padding: 0;
@@ -700,7 +707,7 @@ pre[class*="language-"]{
 .layout-left-put{
   border-right: 1px dotted rgb(223,202,12);
 }
-.layout-left-delete{
+.layout-left-del{
   border-right: 1px dotted rgb(223,12,47);
 }
 .form-horizontal .form-group{
@@ -721,7 +728,7 @@ pre[class*="language-"]{
   background:rgba(223,202,12,.1) !important;
   border-radius: 4px;
 }
-.http-delete{
+.http-del{
   border:1px dotted rgba(223,12,47,.2) !important;
   background:rgba(223,12,47,.1) !important;
   border-radius: 4px;
@@ -736,8 +743,9 @@ pre[class*="language-"]{
   height: 56px;
   text-align: center;
   width: 260px;
-  background: #282a36;
-  color: #ffffff;
+  background: #ffffff;
+  color: #333333;
   font-size: 20px;
   cursor: pointer;
+  box-shadow: 2px 0 4px 0px #eeeeee;
 }

@@ -379,7 +379,7 @@ class Role extends BaseController {
     }
 
     /**
-     * @api {delete} /Role/roleDelete 角色删除
+     * @api {del} /Role/roleDelete 角色删除
      * @apiVersion 0.0.1
      * @apiName roleDelete
      * @apiGroup 角色
