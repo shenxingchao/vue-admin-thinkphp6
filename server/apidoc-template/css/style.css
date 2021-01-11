@@ -401,17 +401,28 @@ tr.del td {
  * ------------------------------------------------------------------------------------------ */
 
 #loader {
-  position: absolute;
+  z-index: 99999999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
+  height: 100%;
+  background-color: #0088cc;
 }
-
-#loader p {
+#loader h2{
+  text-align: center;
   padding-top: 80px;
-  margin-left: -4px;
+  color: #ffffff;
+}
+#loader p {
+  text-align: center;
+  color: #ffffff;
 }
 
 .spinner {
-  margin: 200px auto;
+  margin: 200px auto 0;
   width: 60px;
   height: 60px;
   position: relative;
@@ -420,7 +431,7 @@ tr.del td {
 .container1 > div, .container2 > div, .container3 > div {
   width: 14px;
   height: 14px;
-  background-color: #0088cc;
+  background-color: #ffffff;
 
   border-radius: 100%;
   position: absolute;
@@ -720,12 +731,13 @@ pre[class*="language-"]{
 }
 #scrollingNav .api-title{
   position: fixed;
-    top: 0;
-    left: 0;
-    height: 56px;
-    text-align: center;
-    width: 260px;
-    background: #282a36;
-    color: #ffffff;
-    font-size: 20px;
+  top: 0;
+  left: 0;
+  height: 56px;
+  text-align: center;
+  width: 260px;
+  background: #282a36;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
 }

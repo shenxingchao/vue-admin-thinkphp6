@@ -58,7 +58,9 @@ require([
     WebFont.load({
         active: function() {
             // Only init after fonts are loaded.
-            init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleRequest, semver);
+            setTimeout(()=>{
+                init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleRequest, semver);
+            },1000)
         },
         inactive: function() {
             // Run init, even if loading fonts fails

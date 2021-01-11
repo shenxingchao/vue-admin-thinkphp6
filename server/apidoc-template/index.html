@@ -15,7 +15,7 @@
 <body>
 <script id="template-sidenav" type="text/x-handlebars-template">
 <nav id="scrollingNav">
-  <h1 class="api-title">ApiDoc</h1>
+  <h1 class="api-title" onclick="location.href='#'">ApiDoc</h1>
   <div class="sidenav-search">
     <input class="form-control search" type="text" placeholder="{{__ "请输入搜索关键词..."}}">
     <span class="search-reset">x</span>
@@ -699,8 +699,9 @@
     <div class="spinner-container container3">
       <div class="circle1"></div><div class="circle2"></div><div class="circle3"></div><div class="circle4"></div>
     </div>
-    <p>Loading...</p>
   </div>
+  <h2>ApiDoc</h2>
+  <p>Loading......</p>
 </div>
 
 <script data-main="main.js" src="vendor/require.min.js"></script>
