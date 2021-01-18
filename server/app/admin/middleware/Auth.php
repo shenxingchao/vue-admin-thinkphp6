@@ -7,13 +7,16 @@ use think\facade\Db;
 
 //跨域中间件
 class Auth {
-    public function handle($request, \Closure$next): mixed {
+    public function handle($request, \Closure$next) {
+        if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST' || strtoupper($_SERVER['REQUEST_METHOD']) == 'PUT' || strtoupper($_SERVER['REQUEST_METHOD']) == 'DELETE') {
+            exit;
+        }
         //token鉴权和初始化
         $this->checkToken($request);
         return $next($request);
     }
 
-    protected function checkToken($request): mixed {
+    protected function checkToken($request) {
         $headers = getallheaders();
         if (!isset($headers['X-Token'])) {
             header('Code:50008'); //token不存在 登录
