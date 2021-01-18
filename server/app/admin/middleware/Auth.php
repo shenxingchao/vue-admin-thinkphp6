@@ -9,9 +9,9 @@ use think\facade\Db;
 class Auth {
     public function handle($request, \Closure$next) {
         //测试环境模拟成功，不改变数据
-        if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST' || strtoupper($_SERVER['REQUEST_METHOD']) == 'PUT' || strtoupper($_SERVER['REQUEST_METHOD']) == 'DELETE') {
-            return json(['code' => 20000, 'message' => '测试环境模拟成功，不改变数据', 'data' => null]);
-        }
+        // if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST' || strtoupper($_SERVER['REQUEST_METHOD']) == 'PUT' || strtoupper($_SERVER['REQUEST_METHOD']) == 'DELETE') {
+        //     return json(['code' => 20000, 'message' => '测试环境模拟成功，不改变数据', 'data' => null]);
+        // }
         //token鉴权和初始化
         $this->checkToken($request);
         return $next($request);
