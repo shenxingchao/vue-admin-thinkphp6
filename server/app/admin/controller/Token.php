@@ -9,9 +9,9 @@ class Token extends BaseController {
     /**
      * 生成用户登录令牌
      * @param $user_id
-     * @return bool|string
+     * @return string|null
      */
-    public static function refreshUserToken(int $user_id): ?string {
+    public static function refreshUserToken(int $user_id): string | null {
         if (!$user_id) {
             return false;
         }

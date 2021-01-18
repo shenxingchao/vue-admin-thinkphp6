@@ -366,7 +366,7 @@ class User extends BaseController {
      * @param $data
      * @return array
      */
-    private function getTreeArr($data) {
+    private function getTreeArr($data): array{
         //构造数据
         $items = array();
         //以分类的id为索引
@@ -392,7 +392,7 @@ class User extends BaseController {
      * @param $data
      * @return array
      */
-    private function execute($data) {
+    private function execute($data): array{
         $res = array();
         foreach ($data as $key => $value) {
             $arr = [
