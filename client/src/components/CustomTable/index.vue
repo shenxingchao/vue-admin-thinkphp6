@@ -7,6 +7,11 @@
           筛选<i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
         <el-dropdown-menu slot="dropdown">
+          <div class="clear-btn-box">
+            <el-button size="mini" icon="el-icon-refresh" type="primary" @click="handleClickClearCache">
+              清除缓存
+            </el-button>
+          </div>
           <el-checkbox v-model="checkAll" class="check-column-item" :indeterminate="isIndeterminate"
                        @change="handleCheckAllChange">全选
           </el-checkbox>
@@ -151,12 +156,32 @@ export default {
     },
   },
   mounted() {
-    this.tableHead.forEach((element) => {
-      this.checkedColumn.push(element.label)
-    })
-    this.getTableColWidth()
+    this.initHead()
   },
   methods: {
+    //初始化表头
+    initHead(isClearCache = false) {
+      //获取浏览器缓存的列宽
+      if (localStorage.getItem(this.id) == null) {
+        localStorage.setItem(this.id, JSON.stringify(this.tableHead))
+      } else {
+        let tamptableHead = JSON.parse(localStorage.getItem(this.id))
+
+        tamptableHead.forEach((element) => {
+          let x = this.tableHead.find((obj) => obj.label == element.label)
+          x.width = element.width
+        })
+      }
+      //是否是清除缓存
+      if (!isClearCache) {
+        //放入筛选列
+        this.tableHead.forEach((element) => {
+          this.checkedColumn.push(element.label)
+        })
+      } else {
+        this.key += 1
+      }
+    },
     //行key
     hanldeRowKey(row) {
       return row.id
@@ -253,30 +278,36 @@ export default {
         let applyTable = document.getElementById(table_key)
         let applyTableColgroup = applyTable.getElementsByTagName('colgroup')[0]
         let applyTableCol = applyTableColgroup.getElementsByTagName('col')
+        //这里循环变量i是head字段在表头th中的顺序 需要去掉选择框 和 操作列 这2列是固定的
         for (
-          let i = this.showSelection ? 1 : 0;
-          i < applyTableCol.length;
-          i++
+          let i = this.showSelection ? 1 : 0, j = 0;
+          i <
+          (this.showOpt ? applyTableCol.length - 2 : applyTableCol.length - 1);
+          i++, j++
         ) {
-          applyTableColWidths.push(applyTableCol[i].width)
+          applyTableColWidths.push({
+            label: this.tableHeadOptions[j].label,
+            width: applyTableCol[i].width,
+          })
         }
-        localStorage.setItem(table_key, JSON.stringify(applyTableColWidths))
+        let oldTableHead = JSON.parse(localStorage.getItem(this.id))
+
+        //循环 并更新 指定字段宽度
+        oldTableHead.forEach((element) => {
+          let x = applyTableColWidths.find((obj) => obj.label == element.label)
+          if (x) {
+            element.width = x.width
+          }
+        })
+        //保存到localstorage
+        localStorage.setItem(table_key, JSON.stringify(oldTableHead))
       }, 100)
-    },
-    //获取浏览器缓存的列宽
-    getTableColWidth() {
-      let tableWidth = localStorage.getItem(this.id)
-      if (tableWidth) {
-        tableWidth = JSON.parse(tableWidth)
-        for (let i = 0, length = this.tableHead.length; i < length; i++) {
-          this.tableHead[i].width = tableWidth[i]
-        }
-      }
     },
     //行拖动交换 触发函数参数为交换记录行的id值
     rowDrop() {
       const tbody = document.querySelector('.el-table__body-wrapper tbody')
       const _this = this
+
       Sortable.create(tbody, {
         onEnd({ newIndex, oldIndex }) {
           const currRow = _this.data.splice(oldIndex, 1)[0]
@@ -288,11 +319,13 @@ export default {
     //全选
     handleCheckAllChange(val) {
       this.checkedColumn = []
+
       if (val) {
         this.tableHead.forEach((element) => {
           this.checkedColumn.push(element.label)
         })
       }
+
       this.isIndeterminate = false
     },
     //切换筛选
@@ -301,6 +334,11 @@ export default {
       this.checkAll = checkedCount === this.tableHead.length
       this.isIndeterminate =
         checkedCount > 0 && checkedCount < this.tableHead.length
+    },
+    //清除缓存
+    handleClickClearCache() {
+      localStorage.removeItem(this.id)
+      this.initHead(true)
     },
   },
 }
@@ -318,5 +356,11 @@ export default {
 }
 .check-column-item {
   padding: 4px 8px;
+}
+
+.el-dropdown-menu {
+  .clear-btn-box {
+    padding: 0 10px;
+  }
 }
 </style>
