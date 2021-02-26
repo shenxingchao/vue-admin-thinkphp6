@@ -299,6 +299,13 @@ export default {
             element.width = x.width
           }
         })
+
+        //更新tableHead 数据
+        oldTableHead.forEach((element) => {
+          let x = this.tableHead.find((obj) => obj.label == obj.label)
+          x.width = element.width
+        })
+
         //保存到localstorage
         localStorage.setItem(table_key, JSON.stringify(oldTableHead))
       }, 100)
