@@ -303,7 +303,9 @@ export default {
         //更新tableHead 数据
         oldTableHead.forEach((element) => {
           let x = this.tableHead.find((obj) => obj.label == obj.label)
-          x.width = element.width
+          if (x) {
+            x.width = element.width
+          }
         })
 
         //保存到localstorage
