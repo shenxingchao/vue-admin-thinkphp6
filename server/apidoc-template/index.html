@@ -44,11 +44,11 @@
 </script>
 
 <script id="template-project" type="text/x-handlebars-template">
-  <div class="pull-left">
-    <h1>{{name}}</h1>
-    {{#if description}}<h2>{{{nl2br description}}}</h2>{{/if}}
+  <div class="item-left">
+    <h3>{{name}}</h3>
+    {{#if description}}<h6>{{{nl2br description}}}</h6>{{/if}}
   </div>
-  <div class="pull-right">
+  <div class="item-right">
     {{#if template.withCompare}}
     <div class="btn-group">
       <button id="version" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown">
@@ -69,7 +69,6 @@
     </div>
     {{/if}}
   </div>
-  <div class="clearfix"></div>
 </script>
 
 <script id="template-header" type="text/x-handlebars-template">

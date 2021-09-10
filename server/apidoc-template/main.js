@@ -413,6 +413,9 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
             $('html,body').scrollTop(parseInt($(id).offset().top));
             // $('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 400);
         window.location.hash = $(this).attr('href');
+        $('.sidenav .active').removeClass('active')
+        $(this).parent('li').addClass('active')
+        $(id).scrollTop(0)
     });
 
     /**
@@ -531,6 +534,12 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
         // init modules
         sampleRequest.initDynamic();
         Prism.highlightAll()
+                
+        var href_str = decodeURIComponent(window.location.hash)
+        var id = "a[href='"+href_str +"']";
+        window.location.hash =''
+        if ($(id).length > 0)
+            $(id).click()
     }
     initDynamic();
 
@@ -653,6 +662,10 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
         .focus()
       ;
       endpointsList.search();
+      //直接清除
+      $('.sidenav .active').removeClass('active')
+      //再添加当前的
+      $("a[href='"+decodeURIComponent(window.location.hash)+"']").parent('li').addClass('active')
     });
 
     /**
