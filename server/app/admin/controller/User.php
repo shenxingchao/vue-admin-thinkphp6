@@ -182,7 +182,6 @@ class User extends BaseController {
      * {
      *    "code": "10002"
      * }
-     * }
      * @apiError (错误代码) 10001 数据验证失败
      * @apiError (错误代码) 10002 数据库写入失败
      */
