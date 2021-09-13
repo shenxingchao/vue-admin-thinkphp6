@@ -48,7 +48,7 @@
     <h3>{{name}}</h3>
     {{#if description}}<h6>{{{nl2br description}}}</h6>{{/if}}
   </div>
-  <div class="item-right">
+  <div class="item-right" style="visibility: hidden;">
     {{#if template.withCompare}}
     <div class="btn-group">
       <button id="version" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown">
@@ -115,7 +115,7 @@
           <h1>{{underscoreToSpace article.groupTitle}}{{#if article.title}} - {{article.title}}{{/if}}</h1>
         </div>
         {{#if template.withCompare}}
-        <div class="pull-right">
+        <div class="pull-right" style="visibility: hidden;">
           <div class="btn-group">
             <button class="version btn btn-default dropdown-toggle" data-toggle="dropdown">
               <strong>{{article.version}}</strong>&nbsp;<span class="caret"></span>
