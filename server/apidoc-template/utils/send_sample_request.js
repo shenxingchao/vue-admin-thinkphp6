@@ -142,7 +142,7 @@ define([
         }
 
         $root.find(".sample-request-response").fadeTo(250, 1);
-        $root.find(".sample-request-response-json").html("Loading...");
+        $root.find(".sample-request-response-json").html("等待响应...");
         refreshScrollSpy();
 
         // send AJAX request, catch success or error callback
@@ -172,6 +172,7 @@ define([
                 jsonResponse = jqXHR.responseText;
             }
             $root.find(".sample-request-response-json").text(jsonResponse);
+            Prism.highlightAll()
             refreshScrollSpy();
         };
 
@@ -194,6 +195,7 @@ define([
 
             $root.find(".sample-request-response").fadeTo(250, 1);
             $root.find(".sample-request-response-json").text(message);
+            Prism.highlightAll()
             refreshScrollSpy();
         };
     }
