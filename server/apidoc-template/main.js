@@ -538,8 +538,13 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
         var href_str = decodeURIComponent(window.location.hash)
         var id = "a[href='"+href_str +"']";
         window.location.hash =''
-        if ($(id).length > 0)
+        if ($(id).length > 0){
             $(id).click()
+        }
+        else{
+            //直接清除
+            $('.sidenav .active').removeClass('active')
+        }
     }
     initDynamic();
 
