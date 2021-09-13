@@ -32,7 +32,7 @@
       {{else}}
         <li class="{{#if hidden}}hide {{/if}}" data-group="{{group}}" data-name="{{name}}" data-version="{{version}}">
           <a href="#api-{{group}}-{{name}}" title="{{url}}" data-group="show-api-{{group}}" data-name="show-api-{{group}}-{{name}}" class="nav-list-item show-api api-{{group}}-{{name}}-init">
-            <div class="pull-left typ-name typ-{{toLowerCase type}}"><span>{{toUpperCase type}}</span></div>
+            <div class="pull-left typ-name typ-{{toLowerCase type}}"><span><!-- {{toUpperCase type}} --></span></div>
             <div class="nav-list-url-item">&nbsp;{{title}}</div>
           </a>
         </li>
@@ -44,11 +44,11 @@
 </script>
 
 <script id="template-project" type="text/x-handlebars-template">
-  <div class="pull-left">
-    <h1>{{name}}</h1>
-    {{#if description}}<h2>{{{nl2br description}}}</h2>{{/if}}
+  <div class="item-left">
+    <h3>{{name}}</h3>
+    {{#if description}}<h6>{{{nl2br description}}}</h6>{{/if}}
   </div>
-  <div class="pull-right">
+  <div class="item-right">
     {{#if template.withCompare}}
     <div class="btn-group">
       <button id="version" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown">
@@ -69,7 +69,6 @@
     </div>
     {{/if}}
   </div>
-  <div class="clearfix"></div>
 </script>
 
 <script id="template-header" type="text/x-handlebars-template">
@@ -700,8 +699,6 @@
       <div class="circle1"></div><div class="circle2"></div><div class="circle3"></div><div class="circle4"></div>
     </div>
   </div>
-  <h2>Api Doc</h2>
-  <p>Loading......</p>
 </div>
 
 <script data-main="main.js" src="vendor/require.min.js"></script>
